@@ -1,0 +1,45 @@
+<div class="col-sm-12" ng-controller="usersTableCtrl">
+      <div class="card-body">
+            <form class="form-inline">
+                  <div class="row">
+                        <div class="col-sm-12">
+                              <div class="form-group">
+                                    <label for="search">Search</label>
+                                    <input type="text" class="form-control" id="search" placeholder="Enter value to search" ng-model="search" required>
+                              </div>
+                        </div>
+                  </div>
+            </form>
+      </div>
+      <div class="card">
+            <div class="card-header">
+                  <i class="fa fa-align-justify"></i> List of Supplier Items
+            </div>
+            <div class="card-body">
+                  <table class="table table-striped">
+                        <thead>
+                              <tr>
+                                    <th>Username</th>
+                                    <th>Date registered</th>
+                                    <th>Period</th>
+                                    <th>Status</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                              <tr dir-paginate="user in users|filter:search|itemsPerPage:10">
+                                    <td>{{user.name}}</td>
+                                    <td>{{user.registered}}</td>
+                                    <td>{{user.period}}</td>
+                                    <td>
+                                          <span class="badge badge-success">Active</span>
+                                    </td>
+                              </tr>
+                        </tbody>
+                  </table>
+                  <ul class="pagination">
+                        <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                        </dir-pagination-controls>
+                  </ul>
+            </div>
+      </div>
+</div>

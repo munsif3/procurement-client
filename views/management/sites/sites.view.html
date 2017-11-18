@@ -1,0 +1,41 @@
+<div class="col-sm-12" ng-controller="siteDetailsCtrl" ng-init="getSites()">
+      <div class="card-body">
+            <form class="form-inline">
+                  <div class="row">
+                        <div class="col-sm-12">
+                              <div class="form-group">
+                                    <label for="search">Search</label>
+                                    <input type="text" class="form-control" id="search" placeholder="Enter value to search" ng-model="search" required>
+                              </div>
+                        </div>
+                  </div>
+            </form>
+      </div>
+      <div class="card">
+            <div class="card-header">
+                  <i class="fa fa-align-justify"></i> List of Construction Sites
+            </div>
+            <div class="card-body">
+                  <table class="table table-striped">
+                        <thead>
+                              <tr>
+                                    <th>Site Id</th>
+                                    <th>Site Name</th>
+                                    <th>Site Address</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                              <tr dir-paginate="site in sites|filter:search|itemsPerPage:10">
+                                    <td>{{site.id}}</td>
+                                    <td>{{site.name}}</td>
+                                    <td>{{site.address}}</td>
+                              </tr>
+                        </tbody>
+                  </table>
+                  <ul class="pagination">
+                        <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                        </dir-pagination-controls>
+                  </ul>
+            </div>
+      </div>
+</div>
