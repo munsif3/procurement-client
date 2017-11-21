@@ -20,7 +20,7 @@ angular
         'angular-loading-bar',
         'angularUtils.directives.dirPagination',
         'ngCookies',
-        'ui.bootstrap',
+        // 'ui.bootstrap',
         'ngSanitize',
         'ngAnimate',
         'ui-notification'
