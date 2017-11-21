@@ -1,5 +1,5 @@
-<div class="sidebar">
-  <nav class="sidebar-nav">
+<div class="sidebar" >
+  <nav class="sidebar-nav" >
     <ul class="nav">
       <li class="nav-item">
         <a class="nav-link" ui-sref-active="active" ui-sref="app.main"><i class="icon-speedometer"></i> Dashboard</a>
@@ -8,6 +8,7 @@
       <li class="nav-title">
         CONSTRUCTION MANAGEMENT
       </li>
+      <!--ng-show="role == 'management'"-->
       <li class="nav-item nav-dropdown" ng-class="{open: $state.includes('app.management')}">
         <a class="nav-link nav-dropdown-toggle" ng-class="{active: $state.includes('app.management')}" href="#"><i class="fa fa-users"></i> Management</a>
         <ul class="nav-dropdown-items">
@@ -55,7 +56,54 @@
 
         </ul>
       </li>
+
+
+    <!--ng-show="role == 'accouting'"-->
+    <li class="nav-item nav-dropdown" ng-class="{open: $state.includes('app.accounting')}">
+        <a class="nav-link nav-dropdown-toggle" ng-class="{active: $state.includes('app.accounting')}" href="#"><i class="fa fa-users"></i> Accounting</a>
+        
+     <ul class="nav-dropdown-items">
+           <!-- <li class="nav-item">
+                <a class="nav-link" ui-sref-active="active" ui-sref="app.accounting.viewQuotations"><i></i> View Quotations</a>
+            </li>
+        </ul>-->
+
+        <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle"href="#"><i class="fa fa-file-text"></i> Requisitions</a>
+            <ul class="nav-dropdown-items">
+                <li class="nav-item">
+                    <a class="nav-link" ui-sref-active="active" ui-sref="app.accounting.viewRequisitions"><i></i> View Requisitions</a>
+                </li>
+            </ul>
+        </li>
+        
+        <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle"href="#"><i class="fa fa-calculator"></i> Quotations</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" ui-sref-active="active" ui-sref="app.accounting.viewQuotations"><i></i> View Quotations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" ui-sref-active="active" ui-sref="app.accounting.addQuotations"><i></i> Add Quotations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" ui-sref-active="active" ui-sref="app.accounting.sendQuotations"><i></i> Send Quotations</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle"href="#"><i class="fa fa-shopping-cart"></i> Purchases</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" ui-sref-active="active" ui-sref="app.accounting.viewPurchases"><i></i> View Purchases</a>
+                    </li>
+                </ul>
+            </li>
+     </ul>
+    </li>
+
+
     </ul>
   </nav>
 </div>
-
