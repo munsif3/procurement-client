@@ -1,0 +1,49 @@
+<div ng-controller="departmentController" class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <i ></i> Add new Department
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label for="itemCatalogueId">Department Name</label>
+                            <input type="text" ng-model="department.departmentName" class="form-control" id="itemCatalogueId" placeholder="Enter department name" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="form-group">
+                            <i ng-click="addDepartment()" class="fa fa-plus fa-4x mt-3"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> List of Department
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Deapartment Id</th>
+                        <th>Department Name</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-click="openModal(department)" dir-paginate="department in departments|filter:search|itemsPerPage:10">
+                        <td>{{department.departmentId}}</td>
+                        <td>{{department.departmentName}}</td>
+                        <span class="badge badge-success">Active</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <ul class="pagination">
+                    <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                    </dir-pagination-controls>
+                </ul>
+            </div>
+        </div>
+</div>

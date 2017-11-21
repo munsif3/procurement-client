@@ -1,0 +1,74 @@
+<div ng-controller="UserController" class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <i ></i> Add new User
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" ng-model="user.name" class="form-control"  placeholder="Name" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>NIC</label>
+                        <input type="text" ng-model="user.nic" class="form-control"  placeholder="NIC" required>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Contact Number</label>
+                        <input type="number" ng-model="user.contactNo" class="form-control"  placeholder="Contact Number" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Project Name</label>
+                        <input type="email" ng-model="user.email" class="form-control"  placeholder="Email" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-1">
+                    <div class="form-group">
+                        <i ng-click="addUser(user)" class="fa fa-plus fa-4x mt-3"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-align-justify"></i>List of Employees
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>Employee Name</th>
+                    <th>EMAIL</th>
+                    <th>CONTACT NUMBER</th>
+                    <th>NIC</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-click="openModal(user)" dir-paginate="user in users|filter:search|itemsPerPage:10">
+                    <td>{{user.personId}}</td>
+                    <td>{{user.name}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.contactNo}}</td>
+                    <td>{{user.nic}}</td>
+                    <span class="badge badge-success">Active</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <ul class="pagination">
+                <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                </dir-pagination-controls>
+            </ul>
+        </div>
+    </div>
+</div>

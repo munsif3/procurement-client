@@ -13,6 +13,7 @@ function sidenavCtrl($scope, $role){
     $scope.role = $role;
 }
 
+
 siteDetailsCtrl.$inject = ['$scope', '$timeout', 'SiteService'];
 
 function siteDetailsCtrl($scope, $timeout, SiteService) {

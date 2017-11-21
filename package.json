@@ -12,6 +12,7 @@
     "angular-loading-bar": "^0.9.0",
     "angular-sanitize": "^1.6.6",
     "angular-translate": "^2.15.2",
+    "angular-ui-notification": "^0.3.6",
     "angular-utils-pagination": "^0.11.1",
     "bootstrap": "4.0.0-beta.2",
     "chart.js": "^2.7.0",
@@ -54,5 +55,12 @@
   "author": "Łukasz Holeczek",
   "homepage": "http://coreui.io",
   "copyright": "Copyright 2017 creativeLabs Łukasz Holeczek",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/munsif3/procurement-client.git"
+  },
+  "bugs": {
+    "url": "https://github.com/munsif3/procurement-client/issues"
+  }
 }

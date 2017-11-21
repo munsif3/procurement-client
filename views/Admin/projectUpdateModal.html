@@ -1,0 +1,47 @@
+<div ng-controller="ProjectUpdateController">
+    <div class="card">
+        <div class="card-header">
+            <i ></i>Update Project Details - {{project.pojectId}}
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Project Name</label>
+                        <input type="text" ng-model="project.name" class="form-control"  placeholder="Enter department name" required>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date" ng-model="project.startDate"   class="form-control"   required>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input type="date" ng-model="project.endDate"  class="form-control"  required>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Site</label>
+                        <select ng-model="project.site" ng-options="site.siteName for site in sites" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-sm-4 project-update-button">
+                    <div class="form-group">
+                        <div class="row ">
+                            <div class="col-sm-3">
+                                <button type="button" ng-click="updateProject(project)" class="btn btn-success">Update</button>
+                            </div>
+                            <div class="col-sm-3">
+                                <button type="button" ng-click="redirectToView()" class="btn btn-primary"> Back </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
