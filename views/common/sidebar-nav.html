@@ -1,61 +1,256 @@
-<div class="sidebar">
-  <nav class="sidebar-nav">
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" ui-sref-active="active" ui-sref="app.main"><i class="icon-speedometer"></i> Dashboard</a>
-      </li>
-      <li class="divider"></li>
-      <li class="nav-title">
-        CONSTRUCTION MANAGEMENT
-      </li>
-      <li class="nav-item nav-dropdown" ng-class="{open: $state.includes('app.management')}">
-        <a class="nav-link nav-dropdown-toggle" ng-class="{active: $state.includes('app.management')}" href="#"><i class="fa fa-users"></i> Management</a>
-        <ul class="nav-dropdown-items">
+<div class="sidebar" ng-controller="NavigationController">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" ui-sref-active="active" ui-sref="app.main"><i class="icon-speedometer"></i>
+                    Dashboard</a>
+            </li>
+            <li class="divider"></li>
+            <li ng-if="role=='admin'" class="nav-title">
+                ADMINISTRATION
+            </li>
+            <li ng-if="role=='managementstaff'" class="nav-title">
+                CONSTRUCTION MANAGEMENT
+            </li>
+            <li ng-if="role=='sitemanager'" class="nav-title">
+                SITE MANAGEMENT
+            </li>
+            <li ng-if="role=='accountingstaff'" class="nav-title">
+                ACCOUNTING STAFF
+            </li>
+            <li  ng-if="role=='admin'" class="nav-item nav-dropdown"
+                ng-class="{open: $state.includes('app.admin')}">
 
-          <li class="nav-item nav-dropdown">
-              <a class="nav-link nav-dropdown-toggle"href="#"><i class="fa fa-building"></i> Sites</a>
-              <ul class="nav-dropdown-items">
-                  <li class="nav-item">
-                      <a class="nav-link" ui-sref-active="active" ui-sref="app.management.viewSites"><i></i> View Sites</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" ui-sref-active="active" ui-sref="app.management.addSites"><i></i> Add Sites</a>
-                  </li>
-              </ul>
-          </li>
+                <a class="nav-link nav-dropdown-toggle" ng-class="{active: $state.includes('app.admin')}" href="#"><i
+                        class="fa fa-users"></i> ADMIN</a>
+                <ul class="nav-dropdown-items">
 
-          <li class="nav-item nav-dropdown">
-              <a class="nav-link nav-dropdown-toggle"href="#"><i class="fa fa-shopping-bag"></i> Items</a>
-              <ul class="nav-dropdown-items">
-                  <li class="nav-item nav-dropdown">
-                      <a class="nav-link nav-dropdown-toggle"href="#"><i class="fa fa-arrow-circle-o-right"></i> Item Catalogue</a>
-                      <ul class="nav-dropdown-items">
-                          <li class="nav-item">
-                              <a class="nav-link" ui-sref-active="active" ui-sref="app.management.viewCatalogueItems"><i></i> View Catalogue Item</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link" ui-sref-active="active" ui-sref="app.management.addCatalogueItems"><i></i> Add Catalogue Item</a>
-                          </li>
-                      </ul>
-                  </li>
-                  <li class="nav-item nav-dropdown">
-                      <a class="nav-link nav-dropdown-toggle"href="#"><i class="fa fa-arrow-circle-o-right"></i> Supplier Item</a>
-                      <ul class="nav-dropdown-items">
-                          <li class="nav-item">
-                              <a class="nav-link" ui-sref-active="active" ui-sref="app.management.viewSupplierItems"><i></i> View Supplier Item</a>
-                          </li>
-                          <li class="nav-item">
-                              <a class="nav-link" ui-sref-active="active" ui-sref="app.management.addSupplierItems"><i></i> Add Supplier Item</a>
-                          </li>
-                      </ul>
-                  </li>
-                
-              </ul>
-          </li>
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link" ui-sref-active="active" ui-sref="app.admin.department"><i></i>Departments</a>
+                        <a class="nav-link" ui-sref-active="active" ui-sref="app.admin.project"><i></i>Projects</a>
+                        <a class="nav-link" ui-sref-active="active" ui-sref="app.admin.user"><i></i>Users</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" ui-sref-active="active" ui-sref="app.management.viewSites"><i></i>
+                                    View Sites</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" ui-sref-active="active" ui-sref="app.management.addSites"><i></i>
+                                    Add Sites</a>
+                            </li>
+                        </ul>
+                    </li>
 
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-shopping-bag"></i> Items</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i
+                                        class="fa fa-arrow-circle-o-right"></i> Item Catalogue</a>
+                                <ul class="nav-dropdown-items">
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.viewCatalogueItems"><i></i> View Catalogue Item</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.addCatalogueItems"><i></i> Add Catalogue Item</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i
+                                        class="fa fa-arrow-circle-o-right"></i> Supplier Item</a>
+                                <ul class="nav-dropdown-items">
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.viewSupplierItems"><i></i> View Supplier Item</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.addSupplierItems"><i></i> Add Supplier Item</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+
+                </ul>
+            </li>
+            <li ng-if="role=='managementstaff'" class="nav-item nav-dropdown"
+                ng-class="{open: $state.includes('app.management')}">
+                <a class="nav-link nav-dropdown-toggle" ng-class="{active: $state.includes('app.management')}" href="#"><i
+                        class="fa fa-users"></i>MANAGEMENT</a>
+                <ul class="nav-dropdown-items">
+
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-building"></i> Sites</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" ui-sref-active="active" ui-sref="app.management.viewSites"><i></i>
+                                    View Sites</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" ui-sref-active="active" ui-sref="app.management.addSites"><i></i>
+                                    Add Sites</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-shopping-bag"></i> Items</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i
+                                        class="fa fa-arrow-circle-o-right"></i> Item Catalogue</a>
+                                <ul class="nav-dropdown-items">
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.viewCatalogueItems"><i></i> View Catalogue Item</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.addCatalogueItems"><i></i> Add Catalogue Item</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i
+                                        class="fa fa-arrow-circle-o-right"></i> Supplier Item</a>
+                                <ul class="nav-dropdown-items">
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.viewSupplierItems"><i></i> View Supplier Item</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.addSupplierItems"><i></i> Add Supplier Item</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </li>
+            <li ng-if="role=='sitemanager'" class="nav-item nav-dropdown"
+                ng-class="{open: $state.includes('app.management')}">
+                <a class="nav-link nav-dropdown-toggle" ng-class="{active: $state.includes('app.management')}" href="#"><i
+                        class="fa fa-users"></i>SITE MANAGEMENT</a>
+                <ul class="nav-dropdown-items">
+
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-building"></i> Sites</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" ui-sref-active="active" ui-sref="app.management.viewSites"><i></i>
+                                    View Sites</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" ui-sref-active="active" ui-sref="app.management.addSites"><i></i>
+                                    Add Sites</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-shopping-bag"></i> Items</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i
+                                        class="fa fa-arrow-circle-o-right"></i> Item Catalogue</a>
+                                <ul class="nav-dropdown-items">
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.viewCatalogueItems"><i></i> View Catalogue Item</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.addCatalogueItems"><i></i> Add Catalogue Item</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i
+                                        class="fa fa-arrow-circle-o-right"></i> Supplier Item</a>
+                                <ul class="nav-dropdown-items">
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.viewSupplierItems"><i></i> View Supplier Item</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.addSupplierItems"><i></i> Add Supplier Item</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </li>
+            <li ng-if="role=='accountingstaff'" class="nav-item nav-dropdown"
+                ng-class="{open: $state.includes('app.management')}">
+                <a class="nav-link nav-dropdown-toggle" ng-class="{active: $state.includes('app.management')}" href="#"><i
+                        class="fa fa-users"></i>ACCOUNTING</a>
+                <ul class="nav-dropdown-items">
+
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-building"></i> Sites</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item">
+                                <a class="nav-link" ui-sref-active="active" ui-sref="app.management.viewSites"><i></i>
+                                    View Sites</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" ui-sref-active="active" ui-sref="app.management.addSites"><i></i>
+                                    Add Sites</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item nav-dropdown">
+                        <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-shopping-bag"></i> Items</a>
+                        <ul class="nav-dropdown-items">
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i
+                                        class="fa fa-arrow-circle-o-right"></i> Item Catalogue</a>
+                                <ul class="nav-dropdown-items">
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.viewCatalogueItems"><i></i> View Catalogue Item</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.addCatalogueItems"><i></i> Add Catalogue Item</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item nav-dropdown">
+                                <a class="nav-link nav-dropdown-toggle" href="#"><i
+                                        class="fa fa-arrow-circle-o-right"></i> Supplier Item</a>
+                                <ul class="nav-dropdown-items">
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.viewSupplierItems"><i></i> View Supplier Item</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" ui-sref-active="active"
+                                           ui-sref="app.management.addSupplierItems"><i></i> Add Supplier Item</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </li>
+                </ul>
+            </li>
         </ul>
-      </li>
-    </ul>
-  </nav>
+    </nav>
 </div>
 

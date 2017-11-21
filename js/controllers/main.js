@@ -4,7 +4,6 @@ angular
     .controller('usersTableCtrl', usersTableCtrl)
     .controller('trafficDemoCtrl', trafficDemoCtrl)
     .controller('siteDetailsCtrl', siteDetailsCtrl);
-
 siteDetailsCtrl.$inject = ['$scope', '$timeout', 'SiteService'];
 
 function siteDetailsCtrl($scope, $timeout, SiteService) {

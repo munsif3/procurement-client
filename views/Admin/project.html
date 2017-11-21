@@ -1,0 +1,73 @@
+<div ng-controller="ProjectController" class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <i ></i> Add new Project
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Project Name</label>
+                        <input type="text" ng-model="project.name" class="form-control"  placeholder="Enter department name" required>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date" ng-model="project.startDate" class="form-control"   required>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>End Date</label>
+                        <input type="date" ng-model="project.endDate" class="form-control"  required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Site</label>
+                        <select ng-model="project.site" ng-options="site.siteName for site in sites" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="form-group">
+                        <i ng-click="addProject()" class="fa fa-plus fa-4x mt-3"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-align-justify"></i> List of Projects
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Project ID</th>
+                    <th>Project Name</th>
+                    <th>Project Start Date</th>
+                    <th>Project End Date</th>
+                    <th>Site Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-click="openModal(project)" dir-paginate="project in projects|filter:search|itemsPerPage:10">
+                    <td>{{project.projectId}}</td>
+                    <td>{{project.name}}</td>
+                    <td>{{project.startDate}}</td>
+                    <td>{{project.endDate}}</td>
+                    <td>{{project.site.siteName}}</td>
+                    <span class="badge badge-success">Active</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <ul class="pagination">
+                <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                </dir-pagination-controls>
+            </ul>
+        </div>
+    </div>
+</div>
