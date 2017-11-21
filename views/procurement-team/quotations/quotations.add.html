@@ -1,0 +1,121 @@
+<div class="row">
+    <div class="col-sm-12">
+          <form>
+                <div class="card">
+                      <div class="card-header">
+                            <strong>Generate Quotation Order</strong>
+                        
+                      </div>
+                      <div class="card-body">
+                            <div class="row">
+                                  <div class="col-sm-12">
+                                        <div class="form-group">
+                                              <label for="requisitionId">Requisition ID</label>
+                                              <input type="text" class="form-control" id="itemCatalogueId" placeholder="Enter requisition id" required>
+                                        </div>
+                                  </div>
+                            </div>
+                            <!--/.row-->
+                            <div class="row">
+                                  <div class="col-sm-12">
+                                        <div class="form-group">
+                                              <label for="quotationId">Quotation ID</label>
+                                              <input type="text" class="form-control" id="quotationId" placeholder="Enter quotation id" required>
+                                        </div>
+                                  </div>
+                            </div>
+                            <!--/.row-->                           
+                            <div class="row">
+                                    <div class="col-sm-12">
+                                          <div class="form-group">
+                                                <label for="textarea-input">Select Supplier Id</label>
+                                                <select id="supplierId" name="supplierId" class="form-control" size="1">
+                                                      <option value="0">Please select</option>
+                                                      <option value="1">SUP001</option>
+                                                      <option value="2">SUP002</option>
+                                                      <option value="3">SUP003</option>
+                                                </select>
+                                          </div>
+                            </div>
+                            </div>
+                            <!--/.row-->
+                            <div class="row">
+                              <div class="col-sm-12">
+                                    <div class="form-group">
+                                          <label for="preparedDate">Prepared Date</label>
+                                          <input type="text" class="form-control" id="preparedDate" placeholder="Enter prepared date" required>
+                                    </div>
+                              </div>
+                        </div>
+                        <!--/.row-->   
+                        <!--/.row-->
+                        <div class="row">
+                              <div class="col-sm-12">
+                                    <div class="form-group">
+                                          <label for="expectedDate">Expected Date</label>
+                                          <input type="text" class="form-control" id="expectedDate" placeholder="Enter expected date" required>
+                                    </div>
+                              </div>
+                        </div>
+                        <!--/.row-->   
+                        <!--/.row-->
+                        <div class="row">
+                              <div class="col-sm-12">
+                                    <div class="form-group">
+                                          <label for="preparedBy">Prepared By</label>
+                                          <input type="text" class="form-control" id="preparedBy" placeholder="Enter prepared by" required>
+                                    </div>
+                              </div>
+                        </div>
+                        <!--/.row-->   
+                        <div>
+                              <table class="table table-striped">
+                                    <thead>
+                                          <tr>
+                                                <th>Item ID</th>
+                                                <th>Item Name</th>
+                                                <th>Quantity</th>
+                                                <th>Unit</th>
+                                                <th>Amount</th>
+                                          </tr>
+                                    </thead>
+                                    <tbody>
+                                          <tr dir-paginate="filter:search|itemsPerPage:1">
+                                                <td>ITM001</td>
+                                                <td>Cement</td>
+                                                <td>1000</td>
+                                                <td>Kg</td>
+                                                <td>12650.00</td>
+                                          </tr>
+              
+                                          <tr dir-paginate="filter:search|itemsPerPage:1">
+                                                <td>ITM002</td>
+                                                <td>Brick</td>
+                                                <td>100000</td>
+                                                <td>Nos</td>
+                                                <td>11000.00</td>
+                                            </tr>
+                                    </tbody>
+                              </table>
+                              <!--/.row-->
+                        <div class="row">
+                              <div class="col-sm-12">
+                                    <div class="form-group">
+                                          <label for="totalAmount">Total Amount</label>
+                                          <input type="text" class="form-control" id="totalAmount" placeholder="Enter total amounts" required>
+                                    </div>
+                              </div>
+                        </div>
+                        <!--/.row-->   
+                        </div>
+                            
+                      </div>
+                      <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="reset" class="btn btn-danger"> Reset</button>
+                      </div>
+                </div>
+                </div>
+          </form>
+    </div>
+</div>

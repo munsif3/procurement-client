@@ -1,5 +1,8 @@
-angular.module('app').config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$breadcrumbProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $breadcrumbProvider) {
-    $stateProvider
+
+angular
+.module('app')
+.config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$breadcrumbProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $breadcrumbProvider) {
+  $stateProvider
 
         .state('app.management', {
             url: "/management",
@@ -98,6 +101,50 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider', '$ocLazyLo
                 label: 'Projects'
             }
         })
+      .state('app.accounting', {
+          url: "/accounting",
+          abstract: true,
+          template: '<ui-view></ui-view>',
+          ncyBreadcrumb: {
+              label: 'Accounting'
+          }
+      })
+
+      .state('app.accounting.viewRequisitions', {
+          url: '/requisitions/view',
+          templateUrl: 'views/procurement-team/requisitions/requisitions.view.html',
+          ncyBreadcrumb: {
+              label: 'View Requisitions'
+          }
+      })
+      .state('app.accounting.viewQuotations', {
+          url: '/quotations/view',
+          templateUrl: 'views/procurement-team/quotations/quotations.view.html',
+          ncyBreadcrumb: {
+              label: 'View Quotations'
+          }
+      })
+      .state('app.accounting.addQuotations', {
+          url: '/quotations/add',
+          templateUrl: 'views/procurement-team/quotations/quotations.add.html',
+          ncyBreadcrumb: {
+              label: 'Add Quotations'
+          }
+      })
+      .state('app.accounting.sendQuotations', {
+          url: '/quotations/send',
+          templateUrl: 'views/procurement-team/quotations/quotations.send.html',
+          ncyBreadcrumb: {
+              label: 'Send Quotations'
+          }
+      })
+      .state('app.accounting.viewPurchases', {
+          url: '/purchases/view',
+          templateUrl: 'views/procurement-team/purchases/purchases.view.html',
+          ncyBreadcrumb: {
+              label: 'View Purchases'
+          }
+      })
 
         .state('app.charts', {
             url: '/charts',
@@ -124,3 +171,4 @@ angular.module('app').config(['$stateProvider', '$urlRouterProvider', '$ocLazyLo
             }
         })
 }]);
+
