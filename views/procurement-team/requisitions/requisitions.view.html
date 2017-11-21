@@ -1,0 +1,56 @@
+<div class="col-sm-12">
+    <div class="card-body">
+          <form class="form-inline">
+                <div class="row">
+                      <div class="col-sm-12">
+                            <div class="form-group">
+                                  <label for="search">Search</label>
+                                  <input type="text" class="form-control" id="search" placeholder="Enter value to search" ng-model="search" required>
+                            </div>
+                      </div>
+                </div>
+          </form>
+    </div>
+    <div class="card">
+          <div class="card-header">
+                <i class="fa fa-align-justify"></i> List of Requisition Orders
+          </div>
+          <div class="card-body">
+                <table class="table table-striped">
+                      <thead>
+                            <tr>
+                                  <th>Requisition Id</th>
+                                  <th>Ordered By</th>
+                                  <th>Requested Date</th>
+                                  <th>Expected Date</th>
+                                  <th>Status</th>
+                                  <th>Comments</th>
+                            </tr>
+                      </thead>
+                      <tbody>
+                            <tr dir-paginate="filter:search|itemsPerPage:1">
+                                  <td>REQ001</td>
+                                  <td>EMP001</td>
+                                  <td>2017-10-08</td>
+                                  <td>2017-11-28</td>
+                                  <td>Placed</td>
+                                  <td>Urgent</td>
+                            </tr>
+
+                            <tr dir-paginate="filter:search|itemsPerPage:1">
+                                    <td>REQ002</td>
+                                    <td>EMP002</td>
+                                    <td>2017-10-08</td>
+                                    <td>2017-11-28</td>
+                                    <td>Placed</td>
+                                    <td>Urgent</td>
+                              </tr>
+                      </tbody>
+                </table>
+                <ul class="pagination">
+                      <dir-pagination-controls max-size="1" direction-links="true" boundary-links="true">
+                      </dir-pagination-controls>
+                </ul>
+          </div>
+    </div>
+</div>
