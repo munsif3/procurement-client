@@ -1,0 +1,59 @@
+<div class="col-sm-12">
+    <div class="card-body">
+          <form class="form-inline">
+                <div class="row">
+                      <div class="col-sm-12">
+                            <div class="form-group">
+                                  <label for="search">Search</label>
+                                  <input type="text" class="form-control" id="search" placeholder="Enter value to search" ng-model="search" required>
+                            </div>
+                      </div>
+                </div>
+          </form>
+    </div>
+    <div class="card">
+          <div class="card-header">
+                <i class="fa fa-align-justify"></i> List of Purchases
+          </div>
+          <div class="card-body">
+                <table class="table table-striped">
+                      <thead>
+                            <tr>
+                                  <th>Purchase ID</th>
+                                  <th>Requisition ID</th>
+                                  <th>Supplier ID</th>
+                                  <th>Total Amount</th>
+                                  <th>Delivered Date</th>
+                                  <th>Status</th>
+                                  <th>Comments</th>
+                            </tr>
+                      </thead>
+                      <tbody>
+                            <tr dir-paginate="filter:search|itemsPerPage:1">
+                                  <td>PUR001</td>
+                                  <td>REQ001</td>
+                                  <td>SUP001</td>
+                                  <td>23650.00</td>
+                                  <td>2017-11-10</td>
+                                  <td>Delivered</td>
+                                  <td>Full Payment</td>
+                            </tr>
+
+                            <tr dir-paginate="filter:search|itemsPerPage:1">
+                                    <td>PUR005</td>
+                                    <td>REQ002</td>
+                                    <td>SUP002</td>
+                                    <td>27480.00</td>
+                                    <td>2017-11-09</td>
+                                    <td>Delivered</td>
+                                    <td>Full Payment</td>
+                              </tr>
+                      </tbody>
+                </table>
+                <ul class="pagination">
+                      <dir-pagination-controls max-size="1" direction-links="true" boundary-links="true">
+                      </dir-pagination-controls>
+                </ul>
+          </div>
+    </div>
+</div>
