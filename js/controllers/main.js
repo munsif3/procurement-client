@@ -3,7 +3,15 @@ angular
     .module('app')
     .controller('usersTableCtrl', usersTableCtrl)
     .controller('trafficDemoCtrl', trafficDemoCtrl)
-    .controller('siteDetailsCtrl', siteDetailsCtrl);
+    .controller('siteDetailsCtrl', siteDetailsCtrl)
+    .controller('sidenavCtrl',sidenavCtrl);
+
+let role = 'management';
+sidenavCtrl.$inject = ['$scope', '$role'];
+
+function sidenavCtrl($scope, $role){
+    $scope.role = $role;
+}
 
 siteDetailsCtrl.$inject = ['$scope', '$timeout', 'SiteService'];
 
