@@ -1,4 +1,4 @@
-<div class="col-sm-12">
+<div ng-controller="purchaseController" class="col-sm-12">
     <div class="card-body">
           <form class="form-inline">
                 <div class="row">
@@ -19,36 +19,28 @@
                 <table class="table table-striped">
                       <thead>
                             <tr>
-                                  <th>Requisition Id</th>
-                                  <th>Ordered By</th>
+                                  <th>Order Code</th>
+                                  <th>Requested By</th>
                                   <th>Requested Date</th>
-                                  <th>Expected Date</th>
+                                  <th>Purchase Expected Date</th>
                                   <th>Status</th>
                                   <th>Comments</th>
                             </tr>
                       </thead>
                       <tbody>
-                            <tr dir-paginate="filter:search|itemsPerPage:1">
-                                  <td>REQ001</td>
-                                  <td>EMP001</td>
-                                  <td>2017-10-08</td>
-                                  <td>2017-11-28</td>
-                                  <td>Placed</td>
-                                  <td>Urgent</td>
+                            <tr dir-paginate="purchase in purchases|filter:search|itemsPerPage:1">
+                                  <td>{{purchase.purchaseId}}</td>
+                                  <td>{{purchase.requestedBy.name}}</td>
+                                  <td>{{purchase.requestedDate}}</td>
+                                  <td>{{purchase.purchaseExpectedDate}}</td>
+                                  <td>{{purchase.status}}</td>
+                                  <td>{{purchase.comments}}</td>
+                              
                             </tr>
-
-                            <tr dir-paginate="filter:search|itemsPerPage:1">
-                                    <td>REQ002</td>
-                                    <td>EMP002</td>
-                                    <td>2017-10-08</td>
-                                    <td>2017-11-28</td>
-                                    <td>Placed</td>
-                                    <td>Urgent</td>
-                              </tr>
                       </tbody>
                 </table>
                 <ul class="pagination">
-                      <dir-pagination-controls max-size="1" direction-links="true" boundary-links="true">
+                      <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true">
                       </dir-pagination-controls>
                 </ul>
           </div>
