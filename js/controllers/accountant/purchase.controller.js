@@ -1,4 +1,4 @@
-angular.module('app').controller('purchaseController',['$scope','PurchaseService','$uibModal','$state','Notification',function ($scope,PurchaseService,$uibModal,$state,Notification) {
+angular.module('app').controller('purchaseController',['$scope','PurchaseService','$state','Notification',function ($scope,PurchaseService,$state,Notification) {
 
     var init = function(){
         PurchaseService.getRequisitionOrderByStatus().then(function (d) {
