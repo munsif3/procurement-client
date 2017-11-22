@@ -2,7 +2,8 @@ angular.module("app").factory("SiteService", SiteService);
 
 SiteService.$inject = ["$http"];
 
-function SiteService($http) {
+function SiteService($http) 
+{
   return {
     get: function() {
       return $http
