@@ -1,4 +1,4 @@
-<div ng-controller="purchaseController" class="col-sm-12">
+<div ng-controller="purchaseOrderController" ng-init="getPurchaseOrder()" class="col-sm-12">
     <div class="card-body">
           <form class="form-inline">
                 <div class="row">
@@ -28,14 +28,14 @@
                             </tr>
                       </thead>
                       <tbody>
-                            <tr dir-paginate="purchase in purchases|filter:search|itemsPerPage:1">
-                                  <td>{{purchase.purchaseId}}</td>
+                            <tr dir-paginate="purchase in purchases|filter:search|itemsPerPage:10">
+                                  <td><a href="#">{{purchase.purchaseId}}</a></td>
                                   <td>{{purchase.requestedBy.name}}</td>
                                   <td>{{purchase.requestedDate}}</td>
                                   <td>{{purchase.purchaseExpectedDate}}</td>
                                   <td>{{purchase.status}}</td>
                                   <td>{{purchase.comments}}</td>
-                              
+                                  
                             </tr>
                       </tbody>
                 </table>
