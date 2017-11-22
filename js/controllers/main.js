@@ -4,7 +4,8 @@ angular
     .controller('usersTableCtrl', usersTableCtrl)
     .controller('trafficDemoCtrl', trafficDemoCtrl)
     .controller('siteDetailsCtrl', siteDetailsCtrl)
-    .controller('sidenavCtrl',sidenavCtrl);
+    .controller('sidenavCtrl',sidenavCtrl)
+    .controller('purchaseOrderController',purchaseOrderController);
 
 let role = 'management';
 sidenavCtrl.$inject = ['$scope', '$role'];
@@ -27,6 +28,16 @@ function siteDetailsCtrl($scope, $timeout, SiteService) {
 
 }
 
+purchaseOrderController.$inject = ['$scope', 'PurchaseOrderService', '$stateParams'];
+
+function purchaseOrderController($scope,PurchaseOrderService, $stateParams){
+    $scope.getPurchaseOrder = function () {
+        PurchaseOrderService.getPurchaseOrderByStatus().then(purchases => {
+            console.log(purchases)
+            $scope.purchases = purchases;
+        })
+    };
+}
 
 usersTableCtrl.$inject = ['$scope', '$timeout'];
 
