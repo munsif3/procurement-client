@@ -1,5 +1,5 @@
 
-angular.module('app').controller('DeapartmentUpdateController',['$scope','AdminService','$uibModal','$state','$stateParams','Notification',function ($scope,AdminService,$uibModal,$state,$stateParams,Notification) {
+angular.module('app').controller('DeapartmentUpdateController',['$scope','AdminService','$state','$stateParams','Notification',function ($scope,AdminService,$state,$stateParams,Notification) {
 
     $scope.department=$stateParams.department;
 

@@ -1,13 +1,15 @@
 /**
  * Created by Neruppuda on 11/21/2017.
  */
-angular.module('app').controller('UserController',['$scope','AdminService','$uibModal','$state','Notification',function ($scope,AdminService,$uibModal,$state,Notification) {
+angular.module('app').controller('UserController',['$scope','AdminService','$state','Notification',function ($scope,AdminService,$state,Notification) {
 
     $scope.project={};
+
     var init = function(){
         getAllUsers();
 
     }
+
 
     var getAllUsers=function(){
         AdminService.getAllUsres().then(function (d) {
@@ -20,6 +22,7 @@ angular.module('app').controller('UserController',['$scope','AdminService','$uib
 
     $scope.addUser=function(user){
         console.log(user)
+
         AdminService.addUser(user).then(function (d) {
             Notification.success('New user added successfully');
             init();
@@ -29,7 +32,7 @@ angular.module('app').controller('UserController',['$scope','AdminService','$uib
     }
 
     $scope.openModal = function(user){
-        $state.go('',{id:user.personNo});
+        $state.go('app.admin.updateUser',{id:user.personNo});
     }
 
     init();

@@ -1,0 +1,57 @@
+<div ng-controller="EmployeeUpdateController" class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <i ></i>Update Employee
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>UserName</label>
+                        <input type="text" ng-model="user.userName" class="form-control"  placeholder="User Name" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="text" ng-model="user.password" class="form-control"  placeholder="Password" required>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Designation</label>
+                        <select ng-modal="user.designation" class="form-control">
+                            <option ng-repeat="designation in designations">{{designation}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Department</label>
+                        <select  ng-model="user.department" ng-options="department.departmentName for department in departments" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Project</label>
+                        <select ng-model="user.project" ng-options="project.name for project in projects" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="row employee-update-buttonset">
+                        <div class="col-sm-6">
+                            <button type="button" ng-click="updateEmployee(user)" class="btn btn-success">Update</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="button" ng-click="redirectToView()" class="btn btn-primary">Back</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

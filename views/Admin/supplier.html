@@ -1,0 +1,90 @@
+<div ng-controller="SupplierController" class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <i ></i>Update Supplier
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Select a Person</label>
+                        <select ng-model="supplier.personNumber" ng-options="user.name for user in users | filter:search" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Search</label>
+                        <input type="text" ng-model="search" class="form-control"  placeholder="Serach Name" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Company Name</label>
+                        <input type="text" ng-model="supplier.companyName" class="form-control"  placeholder="User Name" required>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Contracted Date</label>
+                        <input type="date" ng-model="supplier.contractedDate" class="form-control"   required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Approximate Delivery Days</label>
+                        <input type="number" ng-model="supplier.approximateDelivaryDays" class="form-control"  placeholder="Approximate Delivary Days" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Delivery Charge Percentage</label>
+                        <input type="number" ng-model="supplier.deliveryChargePercent" class="form-control"  placeholder="Delivery Charge Percenrt" required>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <div class="form-group">
+                        <i ng-click="addSupplier(supplier)" class="fa fa-plus fa-3x mt-3"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-align-justify"></i>List of Suppliers
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Supplerid ID</th>
+                    <th>Company Name</th>
+                    <th>Contracted Date</th>
+                    <th>Approximate Delivery days</th>
+                    <th>Delivery Charge Percentage</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-click="openModal(supplier)" dir-paginate="supplier in suppliers|itemsPerPage:10">
+                    <td>{{supplier.user.name}}</td>
+                    <td>{{supplier.supplierId}}</td>
+                    <td>{{supplier.companyName}}</td>
+                    <td>{{supplier.contractedDate}}</td>
+                    <td>{{supplier.approximateDelivaryDays}}</td>
+                    <td>{{supplier.deliveryChargePercent}}</td>
+                    <span class="badge badge-success">Active</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <ul class="pagination">
+                <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                </dir-pagination-controls>
+            </ul>
+        </div>
+    </div>
+</div>

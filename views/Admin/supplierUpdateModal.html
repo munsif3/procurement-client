@@ -1,0 +1,52 @@
+<div ng-controller="SupplierUpdateController" class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <i ></i>Update Supplier - {{supplier.supplierId+'-'+supplier.user.name}}
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Company Name</label>
+                        <input type="text" ng-model="supplier.companyName" class="form-control"  placeholder="User Name" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Contracted Date</label>
+                        <input type="date" ng-model="supplier.contractedDate" class="form-control"   required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Approximate Delivery Days</label>
+                        <input type="number" ng-model="supplier.approximateDelivaryDays" class="form-control"  placeholder="Approximate Delivary Days" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Delivery Charge Percentage</label>
+                        <input type="number" ng-model="supplier.deliveryChargePercent" class="form-control"  placeholder="Delivery Charge Percenrt" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <div class="col-sm-12">
+                <div class="form-group">
+                    <div class="row employee-update-buttonset">
+                        <div class="col-sm-6">
+                            <button type="button" ng-click="updateSupplier(supplier)" class="btn btn-success">Update</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="button" ng-click="redirectToView()" class="btn btn-primary">Back</button>
+                        </div>
+                        <div class="col-sm-6">
+                            <button type="button" ng-click="deleteSupplier(supplier)" class="btn btn-warning">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,7 +1,7 @@
 /**
  * Created by Neruppuda on 11/21/2017.
  */
-angular.module('app').controller('ProjectUpdateController',['$scope','AdminService','$uibModal','$state','$stateParams','Notification','$rootScope',function ($scope,AdminService,$uibModal,$state,$stateParams,Notification,$rootScope) {
+angular.module('app').controller('ProjectUpdateController',['$scope','AdminService','$state','$stateParams','Notification','$rootScope',function ($scope,AdminService,$state,$stateParams,Notification,$rootScope) {
 
     $scope.project={};
 

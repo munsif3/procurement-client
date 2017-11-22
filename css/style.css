@@ -9323,7 +9323,15 @@ hr.transparent {
 .navbar .dropdown-toggle .img-avatar {
   height: 35px;
   margin: 0 10px; }
-
+.project-update-button{
+  margin-top:31px;
+}
+.employee-update-buttonset{
+  float: right;
+}
+.department-update-buttonset{
+  margin-top:31px;
+}
 *[dir="rtl"] {
   direction: rtl;
   unicode-bidi: embed; }

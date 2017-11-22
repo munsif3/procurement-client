@@ -76,7 +76,7 @@ angular
             params:{department:null},
             templateUrl: 'views/Admin/departmentUpdateModal.html',
             ncyBreadcrumb: {
-                label: 'Add Supplier Item'
+                label: 'Update Department'
             }
         })
         .state('app.admin.updateProject', {
@@ -98,9 +98,47 @@ angular
             url: '/user/view',
             templateUrl: 'views/Admin/user.html',
             ncyBreadcrumb: {
-                label: 'Projects'
+                label: 'User'
             }
         })
+      .state('app.admin.employee', {
+          url: '/employee/view',
+          templateUrl: 'views/Admin/employee.html',
+          ncyBreadcrumb: {
+              label: 'Employee'
+          }
+      })
+      .state('app.admin.supplier', {
+          url: '/supplier/view',
+          templateUrl: 'views/Admin/supplier.html',
+          ncyBreadcrumb: {
+              label: 'Supplier'
+          }
+      })
+      .state('app.admin.updateUser', {
+          url: '/user/update/:id',
+
+          templateUrl: 'views/Admin/userUpdateModal.html',
+          ncyBreadcrumb: {
+              label: 'User'
+          }
+      })
+      .state('app.admin.updateEmployee', {
+          url: '/employee/update/:id',
+
+          templateUrl: 'views/Admin/employeeUpdateModal.html',
+          ncyBreadcrumb: {
+              label: 'Employee'
+          }
+      })
+      .state('app.admin.updateSupplier', {
+          url: '/supplier/update/:id',
+
+          templateUrl: 'views/Admin/supplierUpdateModal.html',
+          ncyBreadcrumb: {
+              label: 'Supplier'
+          }
+      })
       .state('app.accounting', {
           url: "/accounting",
           abstract: true,

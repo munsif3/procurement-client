@@ -1,0 +1,110 @@
+<div ng-controller="EmployeeController" class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <i ></i> Add new User
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>UserName</label>
+                        <input type="text" ng-model="user.userName" class="form-control"  placeholder="User Name" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="text" ng-model="user.password" class="form-control"  placeholder="Password" required>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Designation</label>
+                        <select ng-modal="user.designation" class="form-control">
+                            <option ng-repeat="designation in designations">{{designation}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Department</label>
+                        <select  ng-model="user.department" ng-options="department.departmentName for department in departments" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Project</label>
+                        <select ng-model="user.project" ng-options="project.name for project in projects" class="form-control"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" ng-model="user.name" class="form-control"  placeholder="Name" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>NIC</label>
+                        <input type="text" ng-model="user.nic" class="form-control"  placeholder="NIC" required>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="form-group">
+                        <label>Contact Number</label>
+                        <input type="number" ng-model="user.contactNo" class="form-control"  placeholder="Contact Number" required>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" ng-model="user.email" class="form-control"  placeholder="Email" required>
+                    </div>
+                </div>
+
+                <div class="col-sm-1">
+                    <div class="form-group">
+                        <i ng-click="addUser(user)" class="fa fa-plus fa-3x mt-3"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-align-justify"></i>List of Employees
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Employee ID</th>
+                    <th>User Name</th>
+                    <th>Password</th>
+                    <th>Designation</th>
+                    <th>Department</th>
+                    <th>Project</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-click="openModal(user)" dir-paginate="user in users|filter:search|itemsPerPage:10">
+                    <td>{{user.employeeId}}</td>
+                    <td>{{user.userName}}</td>
+                    <td>{{user.password}}</td>
+                    <td>{{user.designation}}</td>
+                    <td>{{user.department.departmentName}}</td>
+                    <td>{{user.project.name}}</td>
+                    <span class="badge badge-success">Active</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <ul class="pagination">
+                <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                </dir-pagination-controls>
+            </ul>
+        </div>
+    </div>
+</div>
