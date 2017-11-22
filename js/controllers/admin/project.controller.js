@@ -7,7 +7,7 @@
 /**
  * Created by Neruppuda on 6/4/2017.
  */
-angular.module('app').controller('ProjectController',['$scope','AdminService','$uibModal','$state','Notification',function ($scope,AdminService,$uibModal,$state,Notification) {
+angular.module('app').controller('ProjectController',['$scope','AdminService','$state','Notification',function ($scope,AdminService,$state,Notification) {
 
     $scope.project={};
     var init = function(){

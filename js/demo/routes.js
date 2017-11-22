@@ -101,6 +101,28 @@ angular
                 label: 'Projects'
             }
         })
+      .state('app.admin.employee', {
+          url: '/employee/view',
+          templateUrl: 'views/Admin/employee.html',
+          ncyBreadcrumb: {
+              label: 'Projects'
+          }
+      })
+      .state('app.admin.supplier', {
+          url: '/supplier/view',
+          templateUrl: 'views/Admin/supplier.html',
+          ncyBreadcrumb: {
+              label: 'Projects'
+          }
+      })
+      .state('app.admin.updateUser', {
+          url: '/user/update/:id',
+
+          templateUrl: 'views/Admin/userUpdateModal.html',
+          ncyBreadcrumb: {
+              label: 'Projects'
+          }
+      })
       .state('app.accounting', {
           url: "/accounting",
           abstract: true,

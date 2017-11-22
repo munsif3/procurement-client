@@ -6,7 +6,7 @@
  */
 
 
-angular.module('app').controller('departmentController',['$scope','AdminService','$uibModal','$state','Notification',function ($scope,AdminService,$uibModal,$state,Notification) {
+angular.module('app').controller('departmentController',['$scope','AdminService','$state','Notification',function ($scope,AdminService,$state,Notification) {
 
 
     $scope.addDepartment = function () {
