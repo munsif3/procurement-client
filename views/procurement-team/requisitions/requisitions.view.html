@@ -20,16 +20,18 @@
                       <thead>
                             <tr>
                                   <th>Order Code</th>
-                                  <th>Requested By</th>
+                                  <th>Requester Code</th>
+                                  <th>Requester Name</th>
                                   <th>Requested Date</th>
-                                  <th>Purchase Expected Date</th>
+                                  <th>Expected Date</th>
                                   <th>Status</th>
                                   <th>Comments</th>
                             </tr>
                       </thead>
                       <tbody>
-                            <tr dir-paginate="purchase in purchases|filter:search|itemsPerPage:10">
+                           <tr dir-paginate="purchase in purchases|filter:search|itemsPerPage:10">
                                   <td><a href="#">{{purchase.purchaseId}}</a></td>
+                                  <td>{{purchase.requestedBy.employeeId}}</td>
                                   <td>{{purchase.requestedBy.name}}</td>
                                   <td>{{purchase.requestedDate}}</td>
                                   <td>{{purchase.purchaseExpectedDate}}</td>

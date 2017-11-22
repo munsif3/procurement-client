@@ -36,7 +36,14 @@ function purchaseOrderController($scope,PurchaseOrderService, $stateParams){
             console.log(purchases)
             $scope.purchases = purchases;
         })
-    };
+    }
+
+        $scope.getPurchaseOrderHistory = function () {
+            PurchaseOrderService.getPurchaseOrderHistoryByStatus().then(purchases => {
+                console.log(purchases)
+                $scope.purchases = purchases;
+            })
+        };
 }
 
 usersTableCtrl.$inject = ['$scope', '$timeout'];

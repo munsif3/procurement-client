@@ -12,6 +12,15 @@ function PurchaseOrderService($http) {
                     console.log(response.data)
                     return response.data;
                 });
+        },
+        getPurchaseOrderHistoryByStatus: function () {
+            return $http
+                .get("http://localhost:8080/purchaseOrders/purchaseHistory")
+                .then(function (response) {
+                    // console.log(response)
+                    console.log(response.data)
+                    return response.data;
+                });
         }
     };
 }
