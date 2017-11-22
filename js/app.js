@@ -26,6 +26,7 @@ angular
         'ui-notification'
 
     ])
+
     .config(['cfpLoadingBarProvider','NotificationProvider', function (cfpLoadingBarProvider,NotificationProvider) {
         NotificationProvider.setOptions({
             delay: 10000,
@@ -39,6 +40,20 @@ angular
         cfpLoadingBarProvider.includeSpinner = false;
         cfpLoadingBarProvider.latencyThreshold = 1;
     }])
+    .filter('numberFixedLen', function () {
+        return function (n, len) {
+            var num = parseInt(n, 10);
+            len = parseInt(len, 10);
+            if (isNaN(num) || isNaN(len)) {
+                return n;
+            }
+            num = '' + num;
+            while (num.length < len) {
+                num = '0' + num;
+            }
+            return num;
+        };
+    })
     .run(['$rootScope', '$state', '$stateParams', '$cookieStore', '$http', function ($rootScope, $state, $stateParams, $cookieStore, $http) {
         console.log($state);
         $rootScope.globals = $cookieStore.get('globals') || {};
@@ -61,3 +76,4 @@ angular
 
 
     }]);
+

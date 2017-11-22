@@ -6,34 +6,47 @@
  */
 angular.module('app').controller('SupplierController',['$scope','AdminService','$state','Notification',function ($scope,AdminService,$state,Notification) {
 
+    $scope.supplier={};
     var init = function(){
         getAllSuppliers();
+        getAllUsers();
 
     }
 
     var getAllSuppliers=function(){
-        AdminService.getAllUsres().then(function (d) {
-            $scope.users=d;
+        AdminService.getAllSuppliers().then(function (d) {
+            $scope.suppliers=d;
+
         }, function (errResponse) {
             console.log("error");
         });
     }
 
+    var getAllUsers=function(){
+        AdminService.getAllUsres().then(function (d) {
+            $scope.users=d;
+            $scope.supplier.personNumber=$scope.users[0];
+        }, function (errResponse) {
+            console.log("error");
+        });
+    }
 
     $scope.addSupplier=function(supplier){
-        console.log(user)
+        supplier.personNo=supplier.personNumber.personNo;
+        delete supplier.personNumber;
+        console.log(supplier)
         AdminService.addSupplier(supplier).then(function (d) {
-            Notification.success('New user added successfully');
+            Notification.success('Added Supplier successfully');
             init();
         }, function (errResponse) {
-            Notification.error('Error while adding new user');
+            Notification.error('The person already exist as a supplier');
         });
     }
 
     $scope.openModal = function(supplier){
-        $state.go('',{id:user.personNo});
-    }
 
-        //init();
+        $state.go('app.admin.updateSupplier',{id:supplier.user.personNo});
+    }
+    init();
 }]);
 

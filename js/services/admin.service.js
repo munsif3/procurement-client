@@ -15,7 +15,15 @@ angular.module('app').factory('AdminService',['$http','$q',function($http,$q){
         addUser:addUser,
         getAllEmployees:getAllEmployees,
         addEmployee:addEmployee,
-        getUser:getUser
+        getUser:getUser,
+        updateUser:updateUser,
+        updatEmployee:updatEmployee,
+        getEmployee:getEmployee,
+        getAllSuppliers:getAllSuppliers,
+        addSupplier:addSupplier,
+        getSupplier:getSupplier,
+        updateSupplier:updateSupplier
+
     };
 
     return factory;
@@ -210,6 +218,88 @@ angular.module('app').factory('AdminService',['$http','$q',function($http,$q){
     function addEmployee(user){
         var deferred = $q.defer();
         $http.post("http://localhost:8080/api/employee",user)
+            .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    deferred.reject(errResponse);
+                }
+            );
+        return deferred.promise;
+    }
+
+    function updatEmployee(employee){
+        var deferred = $q.defer();
+        $http.put("http://localhost:8080/api/employee",employee)
+            .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    console.error('error while updating');
+                    deferred.reject(errResponse);
+                }
+            );
+        return deferred.promise;
+    }
+
+    function getEmployee(id){
+        var deferred = $q.defer();
+        $http.get("http://localhost:8080/api/getEmployee/"+id)
+            .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    deferred.reject(errResponse);
+                }
+            );
+        return deferred.promise;
+    }
+
+    function getAllSuppliers(){
+        var deferred = $q.defer();
+        $http.get("http://localhost:8080/api/suppliers/")
+            .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    deferred.reject(errResponse);
+                }
+            );
+        return deferred.promise;
+    }
+    function addSupplier(supplier){
+        var deferred = $q.defer();
+        $http.post("http://localhost:8080/api/supplier",supplier)
+            .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    deferred.reject(errResponse);
+                }
+            );
+        return deferred.promise;
+    }
+    function getSupplier(id){
+        var deferred = $q.defer();
+        $http.get("http://localhost:8080/api/getSupplier/"+id)
+            .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    deferred.reject(errResponse);
+                }
+            );
+        return deferred.promise;
+    }
+    function updateSupplier(supplier){
+        var deferred = $q.defer();
+        $http.put("http://localhost:8080/api/supplier",supplier)
             .then(
                 function (response) {
                     deferred.resolve(response.data);

@@ -4,10 +4,12 @@
 angular.module('app').controller('UserController',['$scope','AdminService','$state','Notification',function ($scope,AdminService,$state,Notification) {
 
     $scope.project={};
+
     var init = function(){
         getAllUsers();
 
     }
+
 
     var getAllUsers=function(){
         AdminService.getAllUsres().then(function (d) {
@@ -20,6 +22,7 @@ angular.module('app').controller('UserController',['$scope','AdminService','$sta
 
     $scope.addUser=function(user){
         console.log(user)
+
         AdminService.addUser(user).then(function (d) {
             Notification.success('New user added successfully');
             init();

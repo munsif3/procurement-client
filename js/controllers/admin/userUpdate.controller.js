@@ -13,11 +13,12 @@ angular.module('app').controller('UserUpdateController',['$scope','AdminService'
 
 
 
-    $scope.updateProject = function (project) {
-        AdminService.updateProject(project).then(function (d) {
-            Notification.success('Project updated succesfully');
+    $scope.updateUser = function (user) {
+        console.log(user);
+        AdminService.updateUser(user).then(function (d) {
+            Notification.success('User updated succesfully');
         }, function (errResponse) {
-            Notification.error('Error while updating project');
+            Notification.error('Error while updating user');
         });
     }
     init();

@@ -51,7 +51,7 @@ angular.module('app').controller('EmployeeController',['$scope','AdminService','
     }
 
     $scope.openModal = function(user){
-        $state.go('',{id:user.personNo});
+        $state.go('app.admin.updateEmployee',{id:user.personNo});
     }
 
     init();
