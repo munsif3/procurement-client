@@ -14,6 +14,10 @@ function PurchaseOrderService($http) {
                 });
         },
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 00b1fbfd0d7b22498a3af34ef1132f64a05dc924
         getPendingPurchaseOrders: function () {
             return $http
                 .get("http://localhost:8080/api/purchaseOrders/" + "Pending")
@@ -25,14 +29,23 @@ function PurchaseOrderService($http) {
             return $http
                 .get("http://localhost:8080/api/purchaseOrders/purchaseId/" + purchaseId)
                 .then(function (response) {
+<<<<<<< HEAD
 =======
+=======
+              }
+        },
+>>>>>>> 00b1fbfd0d7b22498a3af34ef1132f64a05dc924
         getPurchaseOrderHistoryByStatus: function () {
             return $http
                 .get("http://localhost:8080/purchaseOrders/purchaseHistory")
                 .then(function (response) {
                     // console.log(response)
                     console.log(response.data)
+<<<<<<< HEAD
 >>>>>>> bd5ef628a6592572a91de8198d877ede0e1de446
+=======
+
+>>>>>>> 00b1fbfd0d7b22498a3af34ef1132f64a05dc924
                     return response.data;
                 });
         }
