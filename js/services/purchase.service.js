@@ -25,11 +25,12 @@ function PurchaseOrderService($http) {
             return $http
                 .get("http://localhost:8080/api/purchaseOrders/purchaseId/" + purchaseId)
                 .then(function (response) {
-              }
+                    return response.data;
+              })
         },
         getPurchaseOrderHistoryByStatus: function () {
             return $http
-                .get("http://localhost:8080/purchaseOrders/purchaseHistory")
+                .get("http://localhost:8080/api/purchaseOrders/purchaseHistory")
                 .then(function (response) {
                     // console.log(response)
                     console.log(response.data)
