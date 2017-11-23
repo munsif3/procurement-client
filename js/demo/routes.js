@@ -210,6 +210,14 @@ angular
           }
       })
 
+      .state('app.accounting.addRequisition', {
+          url: '/requisition/add',
+          templateUrl: 'views/siteManager/requisition.add.html',
+          ncyBreadcrumb: {
+              label: 'Add Requisition'
+          }
+      })
+
 
         .state('app.charts', {
             url: '/charts',

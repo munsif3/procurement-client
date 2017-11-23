@@ -5,7 +5,6 @@ angular.module('app').controller('PurchaseHistoryController',['$scope','Purchase
 
     var init = function(){
         getPurchaseHistory();
-
     }
 
 
@@ -16,22 +15,6 @@ angular.module('app').controller('PurchaseHistoryController',['$scope','Purchase
             console.log("error");
         });
     }
-
-
-    // $scope.addUser=function(user){
-    //     console.log(user)
-
-    //     AdminService.addUser(user).then(function (d) {
-    //         Notification.success('New user added successfully');
-    //         init();
-    //     }, function (errResponse) {
-    //         Notification.error('Error while adding new user');
-    //     });
-    // }
-
-    // $scope.openModal = function(user){
-    //     $state.go('app.admin.updateUser',{id:user.personNo});
-    // }
 
     init();
 }]);
