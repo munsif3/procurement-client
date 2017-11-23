@@ -8,8 +8,6 @@ function PurchaseOrderService($http) {
             return $http
                 .get("http://localhost:8080/api/purchaseOrders/" + "Placed")
                 .then(function (response) {
-                    // console.log(response)
-                    console.log(response.data)
                     return response.data;
                 });
         },
@@ -24,26 +22,16 @@ function PurchaseOrderService($http) {
             return $http
                 .get("http://localhost:8080/api/purchaseOrders/purchaseId/" + purchaseId)
                 .then(function (response) {
-<<<<<<< HEAD
                     return response.data;
                 });
-=======
-                    console.log(response.data);
-                    return response.data;
-              })
->>>>>>> 23e42c422a0fb01693e9fc96bd152be85c04c183
         },
         getPurchaseOrderHistoryByStatus: function () {
             return $http
                 .get("http://localhost:8080/api/purchaseOrders/purchaseHistory")
                 .then(function (response) {
-                    // console.log(response)
-                    console.log(response.data)
-
                     return response.data;
                 });
         },
-<<<<<<< HEAD
         getItemDetails: function () {
             return $http
                 .get("http://localhost:8080/items")
@@ -61,17 +49,13 @@ function PurchaseOrderService($http) {
                 .then(function (response) {
                     return response;
                 });
-=======
-        getLoggedUserDetails: function(username){
+        },
+        getLoggedUserDetails: function (username) {
             return $http
-            .get("http://localhost:8080/api/user/"+username)
-            .then(function (response) {
-                // console.log(response)
-                // console.log(response.data)
-
-                return response.data;
-            });
->>>>>>> 23e42c422a0fb01693e9fc96bd152be85c04c183
+                .get("http://localhost:8080/api/user/" + username)
+                .then(function (response) {
+                    return response.data;
+                });
         }
     };
 }
