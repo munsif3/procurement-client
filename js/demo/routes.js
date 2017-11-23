@@ -202,15 +202,6 @@ angular
           }
       })
 
-      .state('app.accounting.viewPurchasesHistory', {
-          url: '/purchasesHistory/view',
-          templateUrl: 'views/siteManager/purchasesHistory.view.html',
-          ncyBreadcrumb: {
-              label: 'View PurchasesHistory'
-          }
-      })
-
-
         .state('app.charts', {
             url: '/charts',
             templateUrl: 'views/charts.html',
