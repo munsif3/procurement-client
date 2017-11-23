@@ -3,32 +3,13 @@ angular
     .module('app')
     .controller('usersTableCtrl', usersTableCtrl)
     .controller('trafficDemoCtrl', trafficDemoCtrl)
-    .controller('sidenavCtrl',sidenavCtrl)
-    .controller('purchaseOrderController',purchaseOrderController);
+    .controller('sidenavCtrl',sidenavCtrl);
 
 let role = 'management';
 sidenavCtrl.$inject = ['$scope', '$role'];
 
 function sidenavCtrl($scope, $role){
     $scope.role = $role;
-}
-
-purchaseOrderController.$inject = ['$scope', 'PurchaseOrderService', '$stateParams'];
-
-function purchaseOrderController($scope,PurchaseOrderService, $stateParams){
-    $scope.getPurchaseOrder = function () {
-        PurchaseOrderService.getPurchaseOrderByStatus().then(purchases => {
-            console.log(purchases)
-            $scope.purchases = purchases;
-        })
-    }
-
-        $scope.getPurchaseOrderHistory = function () {
-            PurchaseOrderService.getPurchaseOrderHistoryByStatus().then(purchases => {
-                console.log(purchases)
-                $scope.purchases = purchases;
-            })
-        };
 }
 
 usersTableCtrl.$inject = ['$scope', '$timeout'];

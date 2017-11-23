@@ -1,4 +1,4 @@
-<div ng-controller="purchaseOrderController" ng-init="getPurchaseOrder()" class="col-sm-12">
+<div class="col-sm-12" ng-controller="purchaseOrderController" ng-init="getPurchaseOrder()" >
     <div class="card-body">
           <form class="form-inline">
                 <div class="row">
@@ -30,7 +30,11 @@
                       </thead>
                       <tbody>
                            <tr dir-paginate="purchase in purchases|filter:search|itemsPerPage:10">
-                                  <td><a href="#">{{purchase.purchaseId}}</a></td>
+                                    <td>
+                                        <!-- ui-sref="app.management.viewPurchaseOrder({{purchaseOrderId}: order.purchaseNo})" -->
+                                        <a ui-sref="app.accounting.addQuotations({purchaseId: purchase.purchaseId})">{{purchase.purchaseId}}</a>
+                                    </td>
+                                  <!--<td><a href="#">{{purchase.purchaseId}}</a></td>-->
                                   <td>{{purchase.requestedBy.employeeId}}</td>
                                   <td>{{purchase.requestedBy.name}}</td>
                                   <td>{{purchase.requestedDate}}</td>
