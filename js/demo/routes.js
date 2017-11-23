@@ -181,7 +181,7 @@ angular
           }
       })
       .state('app.accounting.addQuotations', {
-          url: '/quotations/add',
+          url: '/quotations/add/{purchaseId}',
           templateUrl: 'views/procurement-team/quotations/quotations.add.html',
           ncyBreadcrumb: {
               label: 'Add Quotations'

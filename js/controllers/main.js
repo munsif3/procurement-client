@@ -3,41 +3,13 @@ angular
     .module('app')
     .controller('usersTableCtrl', usersTableCtrl)
     .controller('trafficDemoCtrl', trafficDemoCtrl)
-    .controller('sidenavCtrl',sidenavCtrl)
-    .controller('purchaseOrderController',purchaseOrderController);
+    .controller('sidenavCtrl',sidenavCtrl);
 
 let role = 'management';
 sidenavCtrl.$inject = ['$scope', '$role'];
 
 function sidenavCtrl($scope, $role){
     $scope.role = $role;
-}
-
-purchaseOrderController.$inject = ['$scope', '$timeout', '$state', '$stateParams','PurchaseOrderService'];
-
-function purchaseOrderController($scope, $timeout, $state, $stateParams, PurchaseOrderService){
-    $scope.getPurchaseOrder = function () {
-        PurchaseOrderService.getPurchaseOrderByStatus().then(purchases => {
-            console.log(purchases)
-            $scope.purchases = purchases;
-        })
-    }
-
-    $scope.getPurchaseOrderHistory = function () {
-            PurchaseOrderService.getPurchaseOrderHistoryByStatus().then(purchases => {
-                console.log(purchases)
-                $scope.purchases = purchases;
-            })
-    }
-
-    $scope.getPurchaseOrderById = function () {
-            // console.log(purchaseId)
-            PurchaseOrderService.getPurchaseOrderById($stateParams.purchaseId).then(purchases => {
-                console.log(purchases)
-                $scope.selectedPurchases = purchases;
-                $state.go("app.accounting.addQuotations", {purchasesId: $stateParams.purchasesId})
-            });
-    };
 }
 
 usersTableCtrl.$inject = ['$scope', '$timeout'];
