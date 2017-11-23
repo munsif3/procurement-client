@@ -13,6 +13,7 @@ function PurchaseOrderService($http) {
                     return response.data;
                 });
         },
+
         getPendingPurchaseOrders: function () {
             return $http
                 .get("http://localhost:8080/api/purchaseOrders/" + "Pending")
@@ -24,6 +25,15 @@ function PurchaseOrderService($http) {
             return $http
                 .get("http://localhost:8080/api/purchaseOrders/purchaseId/" + purchaseId)
                 .then(function (response) {
+              }
+        },
+        getPurchaseOrderHistoryByStatus: function () {
+            return $http
+                .get("http://localhost:8080/purchaseOrders/purchaseHistory")
+                .then(function (response) {
+                    // console.log(response)
+                    console.log(response.data)
+
                     return response.data;
                 });
         }
