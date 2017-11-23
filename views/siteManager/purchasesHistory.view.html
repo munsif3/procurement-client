@@ -1,0 +1,51 @@
+<div class="col-sm-12" ng-controller="PurchaseHistoryController">
+      <div class="card-body">
+            <form class="form-inline">
+                  <div class="row">
+                        <div class="col-sm-12">
+                              <div class="form-group">
+                                    <label for="search">Search</label>
+                                    <input type="text" class="form-control" id="search" placeholder="Enter value to search" ng-model="search" required>
+                              </div>
+                        </div>
+                  </div>
+            </form>
+      </div>
+      <div class="card">
+            <div class="card-header">
+                  <i class="fa fa-align-justify"></i> Purchase History
+            </div>
+            <div class="card-body">
+                  <table class="table table-striped">
+                        <thead>
+                              <tr>
+                                    <th>Purchase Id</th>
+                                    <th>Project Name</th>
+                                    <th>Site Address</th>
+                                    <th>Requested By</th>
+                                    <th>Requested Date</th>
+                                    <th>Purchase Expected Date</th>
+                                    <th>Delivered Date</th>
+                                    <th>Status</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                              <tr dir-paginate="purchase in purchases|filter:search|itemsPerPage:10">
+                                    <td>{{purchase.purchaseId}}</td>
+                                    <td>{{purchase.requestedBy.project.name}}</td>
+                                    <td>{{purchase.requestedBy.project.site.address}}</td>
+                                    <td>{{purchase.requestedBy.name}}</td>
+                                    <td>{{purchase.requestedDate}}</td>
+                                    <td>{{purchase. purchaseExpectedDate}}</td>
+                                    <td>{{purchase.requestedDate}}</td>
+                                    <td>{{purchase.status}}</td>
+                              </tr>
+                        </tbody>
+                  </table>
+                  <ul class="pagination">
+                        <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                        </dir-pagination-controls>
+                  </ul>
+            </div>
+      </div>
+</div>
