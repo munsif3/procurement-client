@@ -30,7 +30,6 @@
                 <tbody>
                     <tr dir-paginate="order in purchaseOrders|filter:search|itemsPerPage:10">
                         <td>
-                            <!-- ui-sref="app.management.viewPurchaseOrder({{purchaseOrderId}: order.purchaseNo})" -->
                             <a ui-sref="app.management.viewPurchaseOrder({purchaseOrderId: order.purchaseId})">{{order.purchaseId}}</a>
                         </td>
                         <td>{{order.requestedDate}}</td>
