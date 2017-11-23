@@ -13,9 +13,9 @@ function sidenavCtrl($scope, $role){
     $scope.role = $role;
 }
 
-purchaseOrderController.$inject = ['$scope', 'PurchaseOrderService', '$stateParams'];
+purchaseOrderController.$inject = ['$scope', '$timeout', '$state', '$stateParams','PurchaseOrderService'];
 
-function purchaseOrderController($scope,PurchaseOrderService, $stateParams){
+function purchaseOrderController($scope, $timeout, $state, $stateParams, PurchaseOrderService){
     $scope.getPurchaseOrder = function () {
         PurchaseOrderService.getPurchaseOrderByStatus().then(purchases => {
             console.log(purchases)
@@ -23,12 +23,21 @@ function purchaseOrderController($scope,PurchaseOrderService, $stateParams){
         })
     }
 
-        $scope.getPurchaseOrderHistory = function () {
+    $scope.getPurchaseOrderHistory = function () {
             PurchaseOrderService.getPurchaseOrderHistoryByStatus().then(purchases => {
                 console.log(purchases)
                 $scope.purchases = purchases;
             })
-        };
+    }
+
+    $scope.getPurchaseOrderById = function () {
+            // console.log(purchaseId)
+            PurchaseOrderService.getPurchaseOrderById($stateParams.purchaseId).then(purchases => {
+                console.log(purchases)
+                $scope.selectedPurchases = purchases;
+                $state.go("app.accounting.addQuotations", {purchasesId: $stateParams.purchasesId})
+            });
+    };
 }
 
 usersTableCtrl.$inject = ['$scope', '$timeout'];
