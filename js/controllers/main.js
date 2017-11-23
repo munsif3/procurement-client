@@ -3,7 +3,6 @@ angular
     .module('app')
     .controller('usersTableCtrl', usersTableCtrl)
     .controller('trafficDemoCtrl', trafficDemoCtrl)
-    .controller('siteDetailsCtrl', siteDetailsCtrl)
     .controller('sidenavCtrl',sidenavCtrl)
     .controller('purchaseOrderController',purchaseOrderController);
 
@@ -12,20 +11,6 @@ sidenavCtrl.$inject = ['$scope', '$role'];
 
 function sidenavCtrl($scope, $role){
     $scope.role = $role;
-}
-
-
-siteDetailsCtrl.$inject = ['$scope', '$timeout', 'SiteService'];
-
-function siteDetailsCtrl($scope, $timeout, SiteService) {
-
-    $scope.getSites = function () {
-        SiteService.get().then(sites => {
-            console.log(sites)
-            $scope.sites = sites;
-        })
-    };
-
 }
 
 purchaseOrderController.$inject = ['$scope', 'PurchaseOrderService', '$stateParams'];
