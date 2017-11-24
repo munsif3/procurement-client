@@ -1,3 +1,13 @@
+<script>
+    jQuery(function () {
+        jQuery('#authorize-button').click();
+        // location.reload();
+    });
+    // $('#authorize-button').trigger('click');
+    // document.getElementById('#authorize-button').onclick = function () {
+    //     alert("button was clicked");
+    // }​;​
+</script>
 <div class="row" ng-controller="purchaseOrderCtrl" ng-init="getPurchaseOrderById()">
     <div class="col-sm-12">
         <form>
@@ -89,9 +99,11 @@
                         </div>
                     </div>
                     <div>
-                        <input hidden id="supplier-email"  value="immsf5@gmail.com">
-                        <input hidden id="message-subject"  value="test subject">
-                        <input hidden id="message-body"  value="test body">
+                            <!-- value="immsf5@gmail.com" -->
+                        <label hidden id="supplier-email" >immsf5@gmail.com</label>
+                        <label hidden id="message-subject">Purchase Order Approved</label>
+                        <label hidden id="message-body">{{item.purchaseOrderItemPK.itemNo}} of {{item.purchaseOrderItemPK.itemNo}} has been Ordered</label>
+
                     </div>
                     <!--/.row-->
                     <div class="row">
@@ -99,6 +111,7 @@
                             <div class="form-group">
                                 <label for="approval">Approval</label>
                                 <select id="itemId" name="approval" class="form-control" size="1" ng-model="selectedPurchaseOrders.approval">
+
                                     <option value="0">Decline</option>
                                     <option value="1">Approve</option>
                                 </select>
