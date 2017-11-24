@@ -73,20 +73,25 @@
                                 <label for="supplier">Requested Items</label>
                                 <table class="table table-hover table-bordered">
                                     <tr>
-                                        <td><label>Item</label></td>
-                                        <td><label>Quantity</label></td>
+                                        <td>
+                                            <label>Item</label>
+                                        </td>
+                                        <td>
+                                            <label>Quantity</label>
+                                        </td>
                                     </tr>
                                     <tr ng-repeat="item in selectedPurchaseOrders.purchaseOrderItemList">
                                         <td>{{item.purchaseOrderItemPK.itemNo}}</td>
                                         <td>{{item.orderedQuantity}}</td>
                                     </tr>
                                 </table>
-                                <!-- <ul ng-repeat="item in selectedPurchaseOrders.purchaseOrderItemList">
-
-                                </ul> -->
-
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <input hidden id="supplier-email"  value="immsf5@gmail.com">
+                        <input hidden id="message-subject"  value="test subject">
+                        <input hidden id="message-body"  value="test body">
                     </div>
                     <!--/.row-->
                     <div class="row">
@@ -103,8 +108,12 @@
                     <!--/.row-->
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary" ng-click="updatePurchaseOrder(selectedPurchaseOrders)">Update</button>
+                    <button id="update-status" type="submit" class="btn btn-primary" ng-click="updatePurchaseOrder(selectedPurchaseOrders)">Update</button>
                     <!-- <button type="reset" class="btn btn-danger"> Reset</button> -->
+
+                    <a id="authorize-button" class="btn btn-primary pull-right hidden">Authorize</a>
+
+                    <!-- <a id="compose-button" class="btn btn-primary pull-right hidden">Compose</a> -->
                 </div>
             </div>
         </form>
