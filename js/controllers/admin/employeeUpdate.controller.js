@@ -22,6 +22,7 @@ angular.module('app').controller('EmployeeUpdateController',['$scope','AdminServ
         });
     }
 
+
     var getProject = function(){
         AdminService.getAllProject().then(function (d) {
             $scope.projects=d;
@@ -51,11 +52,13 @@ angular.module('app').controller('EmployeeUpdateController',['$scope','AdminServ
 
 
     $scope.updateEmployee = function (employee) {
-        AdminService.updatEmployee(employee).then(function (d) {
-            Notification.success('Employee updated succesfully');
-        }, function (errResponse) {
-            Notification.error('Employee while updating project');
-        });
+
+            AdminService.updatEmployee(employee).then(function (d) {
+                Notification.success('Employee updated succesfully');
+            }, function (errResponse) {
+                Notification.error('Employee while updating project');
+            });
+
     }
     init();
 

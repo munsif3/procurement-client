@@ -12,7 +12,9 @@ angular.module('app').controller('EmployeeController',['$scope','AdminService','
         getAllDepartments();
         getAllProjects();
     }
-
+    var validateNIC = function(value){
+        return (value.lengt==10 && (value.slice(-1)=='v' || value.slice(-1)=='V') && angular.isNumber(parseInt(value.slice(0,9))))
+    }
     var getAllEmployees=function(){
         AdminService.getAllEmployees().then(function (d) {
             $scope.users=d;
