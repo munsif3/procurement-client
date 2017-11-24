@@ -41,13 +41,26 @@ angular.module('app').controller('EmployeeController',['$scope','AdminService','
 
 
     $scope.addUser=function(user){
-        console.log(user)
-        AdminService.addEmployee(user).then(function (d) {
-            Notification.success('New user added successfully');
-            init();
-        }, function (errResponse) {
-            Notification.error('Error while adding new user');
-        });
+
+        if(user.name==null ||user.name=="" ){
+            Notification.warning('Please provide a Empoyee Name');
+        }else if(user.nic==null ||user.nic=="" ){
+            Notification.warning('Please provide a nic number');
+        }else if(!validateNIC(user.nic)){
+            Notification.warning('Wrong format of nic number');
+        } else if(user.contactNo==null || user.contactNo==""){
+            Notification.warning('Please provide a contact number');
+        }else if(user.contactNo.length != 10 || !angular.isNumber(parseInt(user.contactNo))){
+            Notification.warning('Wrong Format of contact number');
+        }else{
+            AdminService.addEmployee(user).then(function (d) {
+                Notification.success('New user added successfully');
+                init();
+            }, function (errResponse) {
+                Notification.error('Error while adding new user');
+            });
+        }
+
     }
 
     $scope.openModal = function(user){
