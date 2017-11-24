@@ -46,60 +46,58 @@ function displayInbox() {
         'labelIds': 'INBOX',
         'maxResults': 10
     });
-}
 
+    $('#update-status').on('click', function () {
+        if ($('#itemId').val() == 1) {
+            console.log("in 1")
+            sendEmail();
+        } else {
+            console.log("in 0")
 
-$('#update-status').on('click', function () {
-    if ($('#itemId').val() == 1) {
-        console.log("in 1")
-        sendEmail();
-    }else{
-        console.log("in 0")
-        
-    }
-});
-
-function sendEmail() {
-    sendMessage({
-            'To': $('#supplier-email').text(),
-            'Subject': $('#message-subject').text()
-        },
-        $('#message-body').text(),
-        composeTidy
-    );
-
-    return false;
-}
-
-function sendMessage(headers_obj, message, callback) {
-    console.log(headers_obj)
-    console.log(message)
-    var email = '';
-    console.log(headers_obj);
-    console.log(message);
-    console.log(callback);
-    for (var header in headers_obj)
-        email += header += ": " + headers_obj[header] + "\r\n";
-
-    email += "\r\n" + message;
-
-    var sendRequest = gapi.client.gmail.users.messages.send({
-        'userId': 'me',
-        'resource': {
-            'raw': window.btoa(email).replace(/\+/g, '-').replace(/\//g, '_')
         }
     });
 
-    return sendRequest.execute(callback);
+    function sendEmail() {
+        sendMessage({
+                'To': $('#supplier-email').text(),
+                'Subject': $('#message-subject').text()
+            },
+            $('#message-body').text(),
+            composeTidy
+        );
+
+        return false;
+    }
+
+    function sendMessage(headers_obj, message, callback) {
+        console.log(headers_obj)
+        console.log(message)
+        var email = '';
+        console.log(headers_obj);
+        console.log(message);
+        console.log(callback);
+        for (var header in headers_obj)
+            email += header += ": " + headers_obj[header] + "\r\n";
+
+        email += "\r\n" + message;
+
+        var sendRequest = gapi.client.gmail.users.messages.send({
+            'userId': 'me',
+            'resource': {
+                'raw': window.btoa(email).replace(/\+/g, '-').replace(/\//g, '_')
+            }
+        });
+
+        return sendRequest.execute(callback);
+    }
+
+    function composeTidy() {
+        $('#compose-modal').modal('hide');
+
+        $('#compose-to').val('');
+        $('#compose-subject').val('');
+        $('#compose-message').val('');
+
+        $('#send-button').removeClass('disabled');
+    }
 }
-
-function composeTidy() {
-    $('#compose-modal').modal('hide');
-
-    $('#compose-to').val('');
-    $('#compose-subject').val('');
-    $('#compose-message').val('');
-
-    $('#send-button').removeClass('disabled');
-}
-// });
