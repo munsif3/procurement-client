@@ -56,6 +56,20 @@ function PurchaseOrderService($http) {
                 .then(function (response) {
                     return response.data;
                 });
+        },
+        getSupplierItemDetails: function () {
+            return $http
+                .get("http://localhost:8080/api/supplierItems")
+                .then(function (response) {
+                    return response.data;
+                });
+        },
+        getSupplierDetails: function () {
+            return $http
+                .get("http://localhost:8080/api/suppliers")
+                .then(function (response) {
+                    return response.data;
+                });
         }
     };
 }

@@ -51,33 +51,43 @@
                               <div class="col-sm-12">
                                     <div class="form-group">
                                           <label for="preparedDate">Prepared Date</label>
-                                          <input type="date" class="form-control" id="preparedDate" placeholder="Enter prepared date" required>
+                                          <input type="text" class="form-control" ng-model="preparedDate" id="preparedDate" required>
+                                         <!-- <input type="date" class="form-control" id="preparedDate" placeholder="Enter prepared date" required>-->
                                     </div>
                               </div>
                         </div>
                         <!--/.row-->                                                                   
                         <div>
-                              <table class="table table-striped">
-                                    <thead>
-                                          <tr>
-                                                <th>Item ID</th>
-                                                <th>Item Name</th>
-                                                <th>Quantity</th>
-                                                <th>Unit</th>
-                                                <th>Amount</th>
-                                          </tr>
-                                    </thead>
-                                    <tbody>
-                                          <!-- <tr dir-paginate="filter:search|itemsPerPage:1">
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                                <td></td>
-                                          </tr> -->
+                        
+
+                              <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <label for="requestedItems">Requested Items</label>
+                                            <table class="table table-hover table-bordered">
+                                                <tr>
+                                                    <td><label>Item</label></td>
+                                                    <td><label>Quantity</label></td>
+                                                    <td><label>Unit</label></td>
+                                                    <td><label>Unit Price</label></td>
+                                                    <td><label>Sub Total</label></td>
+                                                </tr>
+                                                <tr ng-repeat="item in selectedPurchases.purchaseOrderItemList" ng-repeat="supItems in supplierItems">
+                                                    <td>{{item.purchaseOrderItemPK.itemNo}}</td>
+                                                    <td>{{item.orderedQuantity}}</td>
+                                                    <td>{{supItems.supplierItemPK.itemNo}}</td>
+                                                    <td>{{supItems.unitPrice}}</td>
+                                                    <td>{{}}</td>
+                                                </tr>
+                                            </table>
+                                            <!-- <ul ng-repeat="item in selectedPurchaseOrders.purchaseOrderItemList">
             
-                                    </tbody>
-                              </table>
+                                            </ul> -->
+            
+                                        </div>
+                                    </div>
+                                </div>
+
                               <div>
                                     <button type="button" class="btn btn-primary">Generate Quotation</button>
                               </div>
@@ -86,7 +96,7 @@
                               <div class="col-sm-12">
                                     <div class="form-group">
                                           <label for="totalAmount">Total Amount</label>
-                                          <input type="text" class="form-control" id="totalAmount" placeholder="Enter total amounts" required>
+                                          <input type="text" ng-model="suppliers.supplierId" class="form-control" id="totalAmount" placeholder="Enter total amounts" required>
                                     </div>
                               </div>
                         </div>
@@ -98,11 +108,8 @@
                               <div class="col-sm-12">
                                     <div class="form-group">
                                           <label for="textarea-input">Select Supplier Id</label>
-                                          <select id="supplierId" name="supplierId" class="form-control" size="1">
-                                                <option value="0">Please select</option>
-                                                <!--<option value="1">SUP001</option>
-                                                <option value="2">SUP002</option>
-                                                <option value="3">SUP003</option>-->
+                                          <select ng-model="chosen" ng-options="supplier.supplierId for supplier in suppliers"  class="form-control"></select>                                          
+                                          <option value="" disabled selected>Select Supplier</option>
                                           </select>
                                     </div>
                       </div>
