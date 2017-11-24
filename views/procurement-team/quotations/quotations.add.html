@@ -87,6 +87,9 @@
                                                                         <label>Item No</label>
                                                                   </td>
                                                                   <td>
+                                                                        <label>Item Name</label>
+                                                                  </td>
+                                                                  <td>
                                                                         <label>Quantity</label>
                                                                   </td>
                                                                   <td>
@@ -103,6 +106,7 @@
                                                             <tr ng-repeat="r in requestItems.supitems">
                                                                   {{r}}
                                                                   <td>{{r.newsupp.item.itemId}}</td>
+                                                                  <td>{{r.newsupp.item.itemName}}</td>
                                                                   <td>{{r.orderedQuantity}}</td>
                                                                   <td>{{r.newsupp.item.unitOfMeasurement}}</td>
                                                                   <td>{{r.newsupp.unitPrice}}</td>
@@ -118,15 +122,16 @@
                                     </div>
 
                                     <div>
-                                          <button type="button" class="btn btn-primary">Generate Quotation</button>
+                                          <button type="button" ng-click="value=getTotal(); status=getOrderStatus()" class="btn btn-primary">Calculate Quotation</button>
+                                          
                                     </div>
                                     <!--/.row-->
                                     <div class="row">
                                           <div class="col-sm-12">
                                                 <div class="form-group">
                                                       <label for="totalAmount">Total Amount</label>
-                                                      <input type="text" ng-model="selectedPurchases.totalAmount" class="form-control" id="totalAmount" placeholder="Enter total amounts"
-                                                            required>
+                                                      <input type="text" ng-model="selectedPurchases.totalAmount" class="form-control" id="totalAmount"  placeholder="Total amount"
+                                                          ng-value="value"  required>
                                                 </div>
                                           </div>
                                     </div>
@@ -139,7 +144,7 @@
                                     <div class="col-sm-12">
                                           <div class="form-group">
                                                 <label for="approval">Approval Status</label>
-                                                <input type="text" class="form-control" id="approval" required>
+                                                <input type="text" ng-value="status" class="form-control" id="approval" placeholder="Approval Status" required>
                                           </div>
                                     </div>
                               </div>
