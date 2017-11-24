@@ -2,9 +2,9 @@ angular
     .module('app')
     .controller("purchaseOrderController", purchaseOrderController);
 
-purchaseOrderController.$inject = ['$scope', '$timeout', '$state', '$filter', '$rootScope', '$stateParams', 'PurchaseOrderService'];
+purchaseOrderController.$inject = ['$scope', '$timeout', '$state', '$filter', '$location','Notification','$rootScope', '$stateParams', 'PurchaseOrderService'];
 
-function purchaseOrderController($scope, $timeout, $state, $filter, $rootScope, $stateParams, PurchaseOrderService) {
+function purchaseOrderController($scope, $timeout, $state, $filter,$location, Notification, $rootScope, $stateParams, PurchaseOrderService) {
 
     let currentUser = $rootScope.globals.currentUser;
 
@@ -26,6 +26,7 @@ function purchaseOrderController($scope, $timeout, $state, $filter, $rootScope, 
     $scope.getPurchaseOrderById = function () {
         PurchaseOrderService.getPurchaseOrderById($stateParams.purchaseId)
             .then(purchases => {
+                Notification.success("Purchase Order " + $stateParams.purchaseId+ " details have been loaded");
                 $scope.selectedPurchases = purchases;
             })
             .then(getLoggedUserDetails(currentUser.email))
@@ -63,13 +64,13 @@ function purchaseOrderController($scope, $timeout, $state, $filter, $rootScope, 
     }
 
 
-    $scope.updatePurchaseOrder = function (purchase) {
-        PurchaseOrderService.updatePurchaseOrder(purchase).then(function (d) {
-            Notification.success('Purchase was updated successfully');
-        }, function (errResponse) {
-            Notification.error('Error while updating the purchase order');
-        });
-    }
+    // $scope.updatePurchaseOrder = function (purchase) {
+    //     PurchaseOrderService.updatePurchaseOrder(purchase).then(function (d) {
+    //         Notification.success('Purchase was updated successfully');
+    //     }, function (errResponse) {
+    //         Notification.error('Error while updating the purchase order');
+    //     });
+    // }
 
     $scope.supplierChanged = function (item) {
         changeRequestedItemPriceBySelectedSupplier(item.supplierId);
@@ -107,4 +108,30 @@ function purchaseOrderController($scope, $timeout, $state, $filter, $rootScope, 
     $scope.getOrderStatus = function(){
         return "Pending";
     }
+
+    /**
+     * Update purchase order after generating the quotation of the purchase order
+     */
+    $scope.updatePurchaseOrder = function (quotations) {
+        console.log(quotations.approval);
+                if (quotations.approval == "Pending") {
+                    quotations.supplierId = $scope.selectedPurchaseOrders.supplierId;
+                    quotations.totalAmount = $scope.selectedPurchaseOrders.totalAmount;
+                    quotations.approval = "Pending";
+                    quotations.preparedBy = $scope.selectedPurchaseOrders.preparedBy;
+                    quotations.preparedDate = prepareDate;
+        
+                    PurchaseOrderService.updatePurchaseOrder(quotations).then(quotations => {
+                            Notification.success("Purchase Order has been sent to management for approval");
+                            $location.path('/accounting/purchases/view');
+                        })
+                        .catch(err => {
+                            console.log(err);
+                        });
+                } else if (quotations.approval != "Pending") {
+                    Notification.error("Purchase Order has been Declined");
+                    $location.path('/accounting/requisitions/view');
+                   console.log("yes");
+                }
+            }
 }

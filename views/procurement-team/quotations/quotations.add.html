@@ -137,7 +137,7 @@
                                     <div class="col-sm-12">
                                           <div class="form-group">
                                                 <label for="approval">Approval Status</label>
-                                                <input type="text" ng-value="status" class="form-control" id="approval" placeholder="Approval Status" required>
+                                                <input type="text" ng-model="selectedPurchases.approval" ng-value="status" class="form-control" id="approval" placeholder="Approval Status" required>
                                           </div>
                                     </div>
                               </div>
@@ -146,7 +146,7 @@
 
                         </div>
                         <div class="card-footer">
-                              <button type="submit" class="btn btn-success">Update</button>
+                              <button type="submit" class="btn btn-success" ng-click="updatePurchaseOrder(selectedPurchases)">Update</button>
                               <button type="reset" class="btn btn-danger"> Reset</button>
                         </div>
                   </div>
