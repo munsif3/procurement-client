@@ -1,138 +1,158 @@
 <div class="row" ng-controller="purchaseOrderController" ng-init="getPurchaseOrderById()">
-    <div class="col-sm-12">
-          <form>
-                <div class="card">
-                      <div class="card-header">
-                            <strong>Generate Quotation Order</strong>
-                        
-                      </div>
-                      <div class="card-body">
-                            <div class="row">
-                                  <div class="col-sm-12">
-                                        <div class="form-group">
-                                              <label for="purchaseId">Purchase ID</label>
-                                              <input type="text" ng-model="selectedPurchases.purchaseId" class="form-control" id="purchaseId" placeholder="Enter Purchase Order Id"
-                                              required>
-                                        </div>
-                                  </div>
-                            </div>
-                            <!--/.row-->
-                            <div class="row">
-                                  <div class="col-sm-12">
-                                        <div class="form-group">
-                                              <label for="requestedBy">Requester Code</label>
-                                              <input type="text" ng-model="selectedPurchases.requestedBy.employeeId" class="form-control" id="requestedBy" placeholder="Enter requestedBy" required>
-                                        </div>
-                                  </div>
-                            </div>
-                            <!--/.row--> 
-                            <!--/.row-->
-                            <div class="row">
-                              <div class="col-sm-12">
-                                    <div class="form-group">
-                                          <label for="currentStatus">Current Status</label>
-                                          <input type="text" ng-model="selectedPurchases.status" class="form-control" id="currentStatus" placeholder="Enter preparedBy" required>
-                                    </div>
-                              </div>
-                        </div>
-                        <!--/.row--> 
-                            <!--/.row-->
-                            <div class="row">
-                              <div class="col-sm-12">
-                                    <div class="form-group">
-                                          <label for="preparedBy">Prepared Staff Code</label>
-                                          <input type="text" ng-model="userDetails.employeeId" class="form-control" id="preparedBy" required>
-                                    </div>
-                              </div>
-                        </div>
-                        <!--/.row--> 
-                        <!--/.row-->
-                        <div class="row">
-                              <div class="col-sm-12">
-                                    <div class="form-group">
-                                          <label for="preparedDate">Prepared Date</label>
-                                          <input type="text" class="form-control" ng-model="preparedDate" id="preparedDate" required>
-                                         <!-- <input type="date" class="form-control" id="preparedDate" placeholder="Enter prepared date" required>-->
-                                    </div>
-                              </div>
-                        </div>
-                        <!--/.row-->                                                                   
-                        <div>
-                        
+      <div class="col-sm-12">
+            <form>
+                  <div class="card">
+                        <div class="card-header">
+                              <strong>Generate Quotation Order</strong>
 
+                        </div>
+                        <div class="card-body">
                               <div class="row">
                                     <div class="col-sm-12">
-                                        <div class="form-group">
-                                            <label for="requestedItems">Requested Items</label>
-                                            <table class="table table-hover table-bordered">
-                                                <tr>
-                                                    <td><label>Item</label></td>
-                                                    <td><label>Quantity</label></td>
-                                                    <td><label>Unit</label></td>
-                                                    <td><label>Unit Price</label></td>
-                                                    <td><label>Sub Total</label></td>
-                                                </tr>
-                                                <tr ng-repeat="item in selectedPurchases.purchaseOrderItemList" ng-repeat="supItems in supplierItems">
-                                                    <td>{{item.purchaseOrderItemPK.itemNo}}</td>
-                                                    <td>{{item.orderedQuantity}}</td>
-                                                    <td>{{supItems.supplierItemPK.itemNo}}</td>
-                                                    <td>{{supItems.unitPrice}}</td>
-                                                    <td>{{}}</td>
-                                                </tr>
-                                            </table>
-                                            <!-- <ul ng-repeat="item in selectedPurchaseOrders.purchaseOrderItemList">
-            
-                                            </ul> -->
-            
-                                        </div>
+                                          <div class="form-group">
+                                                <label for="purchaseId">Purchase ID</label>
+                                                <input type="text" ng-model="selectedPurchases.purchaseId" ng-readonly="true" class="form-control" id="purchaseId" placeholder="Enter Purchase Order Id"
+                                                      required>
+                                          </div>
                                     </div>
-                                </div>
-
-                              <div>
-                                    <button type="button" class="btn btn-primary">Generate Quotation</button>
                               </div>
                               <!--/.row-->
-                        <div class="row">
-                              <div class="col-sm-12">
-                                    <div class="form-group">
-                                          <label for="totalAmount">Total Amount</label>
-                                          <input type="text" ng-model="suppliers.supplierId" class="form-control" id="totalAmount" placeholder="Enter total amounts" required>
+                              <div class="row">
+                                    <div class="col-sm-12">
+                                          <div class="form-group">
+                                                <label for="requestedBy">Requester Code</label>
+                                                <input type="text" ng-model="selectedPurchases.requestedBy.employeeId" ng-readonly="true" class="form-control" id="requestedBy"
+                                                      placeholder="Enter requestedBy" required>
+                                          </div>
                                     </div>
                               </div>
-                        </div>
-                        <!--/.row-->   
-                        </div>
+                              <!--/.row-->
+                              <!--/.row-->
+                              <div class="row">
+                                    <div class="col-sm-12">
+                                          <div class="form-group">
+                                                <label for="currentStatus">Current Status</label>
+                                                <input type="text" ng-model="selectedPurchases.status" ng-readonly="true" class="form-control" id="currentStatus" placeholder="Enter preparedBy"
+                                                      required>
+                                          </div>
+                                    </div>
+                              </div>
+                              <!--/.row-->
+                              <!--/.row-->
+                              <div class="row">
+                                    <div class="col-sm-12">
+                                          <div class="form-group">
+                                                <label for="preparedBy">Prepared Staff Code</label>
+                                                <input type="text" ng-model="userDetails.employeeId" ng-readonly="true" class="form-control" id="preparedBy" required>
+                                          </div>
+                                    </div>
+                              </div>
+                              <!--/.row-->
+                              <!--/.row-->
+                              <div class="row">
+                                    <div class="col-sm-12">
+                                          <div class="form-group">
+                                                <label for="preparedDate">Prepared Date</label>
+                                                <input type="text" class="form-control" ng-model="preparedDate" ng-readonly="true" id="preparedDate" required>
+                                                <!--<input type="date" class="form-control" id="preparedDate" placeholder="Enter prepared date" required>-->
+                                          </div>
+                                    </div>
+                              </div>
+                              <!--/.row-->
+                              <div class="row">
+                                    <div class="col-sm-12">
+                                          <div class="form-group">
+                                                <label for="textarea-input">Select Supplier Id</label>
+                                                <!-- <select ng-model="suppliers.supplierId" ng-options="supplier.supplierId for supplier in suppliers"  class="form-control"></select>                                           -->
+                                                <select ng-change="supplierChanged(suppliers.supplierId)" ng-model="suppliers.supplierId" ng-options="supplier.supplierId for supplier in suppliers"
+                                                      class="form-control">
+                                                      <option ng-show="record.id == 0" value="">Select a supplier
+                                                      </option>
+                                                </select>
 
-                        <!--/.row-->   
-                        <div class="row">
-                              <div class="col-sm-12">
-                                    <div class="form-group">
-                                          <label for="textarea-input">Select Supplier Id</label>
-                                          <select ng-model="chosen" ng-options="supplier.supplierId for supplier in suppliers"  class="form-control"></select>                                          
-                                          <option value="" disabled selected>Select Supplier</option>
-                                          </select>
+                                                <!-- </select> -->
+                                          </div>
                                     </div>
-                      </div>
-                      </div>
-                      <!--/.row-->   
-                      <div class="row">
-                        <div class="col-sm-12">
-                              <div class="form-group">
-                                    <label for="approval">Approval Status</label>
-                                    <input type="text" class="form-control" id="approval" required>
                               </div>
+
+                              <div>
+
+                                    <div class="row">
+                                          <div class="col-sm-12">
+                                                <div class="form-group">
+                                                      <label for="requestedItems">Requested Items</label>
+                                                      <table class="table table-hover table-bordered">
+                                                            <tr>
+                                                                  <td>
+                                                                        <label>Item No</label>
+                                                                  </td>
+                                                                  <td>
+                                                                        <label>Quantity</label>
+                                                                  </td>
+                                                                  <td>
+                                                                        <label>Unit</label>
+                                                                  </td>
+                                                                  <td>
+                                                                        <label>Unit Price</label>
+                                                                  </td>
+                                                                  <td>
+                                                                        <label>Sub Total</label>
+                                                                  </td>
+                                                            </tr>
+                                                            <!-- <tr ng-repeat="item in selectedPurchases.purchaseOrderItemList" ng-repeat="supItems in supplierItems"> -->
+                                                            <tr ng-repeat="r in requestItems.supitems">
+                                                                  {{r}}
+                                                                  <td>{{r.newsupp.item.itemId}}</td>
+                                                                  <td>{{r.orderedQuantity}}</td>
+                                                                  <td>{{r.newsupp.item.unitOfMeasurement}}</td>
+                                                                  <td>{{r.newsupp.unitPrice}}</td>
+                                                                  <td>{{r.orderedQuantity * r.newsupp.unitPrice}}</td>
+                                                            </tr>
+                                                      </table>
+                                                      <!-- <ul ng-repeat="item in selectedPurchaseOrders.purchaseOrderItemList">
+            
+                                            </ul> -->
+
+                                                </div>
+                                          </div>
+                                    </div>
+
+                                    <div>
+                                          <button type="button" class="btn btn-primary">Generate Quotation</button>
+                                    </div>
+                                    <!--/.row-->
+                                    <div class="row">
+                                          <div class="col-sm-12">
+                                                <div class="form-group">
+                                                      <label for="totalAmount">Total Amount</label>
+                                                      <input type="text" ng-model="selectedPurchases.totalAmount" class="form-control" id="totalAmount" placeholder="Enter total amounts"
+                                                            required>
+                                                </div>
+                                          </div>
+                                    </div>
+                                    <!--/.row-->
+                              </div>
+
+
+                              <!--/.row-->
+                              <div class="row">
+                                    <div class="col-sm-12">
+                                          <div class="form-group">
+                                                <label for="approval">Approval Status</label>
+                                                <input type="text" class="form-control" id="approval" required>
+                                          </div>
+                                    </div>
+                              </div>
+
+                              <!--/.row-->
+
+                        </div>
+                        <div class="card-footer">
+                              <button type="submit" class="btn btn-success">Update</button>
+                              <button type="reset" class="btn btn-danger"> Reset</button>
                         </div>
                   </div>
-                      
-                  <!--/.row-->
-                            
-                      </div>
-                      <div class="card-footer">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                            <button type="reset" class="btn btn-danger"> Reset</button>
-                      </div>
-                </div>
-                </div>
-          </form>
-    </div>
+      </div>
+      </form>
+</div>
 </div>
