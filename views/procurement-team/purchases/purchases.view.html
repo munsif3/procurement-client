@@ -32,7 +32,7 @@
                       </thead>
                       <tbody>
                             <tr dir-paginate="purchase in purchases|filter:search|itemsPerPage:10">
-                              <td><a href="#">{{purchase.purchaseId}}</a></td>
+                              <td>{{purchase.purchaseId}}</td>
                               <td>{{purchase.preparedBy.employeeId}}</td>
                               <td>{{purchase.preparedBy.name}}</td>
                               <td>{{purchase.supplierNo.companyName}}</td>
