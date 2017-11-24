@@ -157,6 +157,22 @@ angular
               label: 'Supplier'
           }
       })
+      .state('app.admin.supplierHistory', {
+          url: '/supplier/history/',
+
+          templateUrl: 'views/Admin/supplierHistory.html',
+          ncyBreadcrumb: {
+              label: 'Supplier'
+          }
+      })
+      .state('app.admin.reviewSupplierHistory', {
+          url: '/supplier/history/:id',
+
+          templateUrl: 'views/Admin/supplierHistoryReview.html',
+          ncyBreadcrumb: {
+              label: 'Supplier'
+          }
+      })
       .state('app.accounting', {
           url: "/accounting",
           abstract: true,

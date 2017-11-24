@@ -31,11 +31,21 @@ angular.module('app').controller('ProjectUpdateController',['$scope','AdminServi
     }
 
     $scope.updateProject = function (project) {
-        AdminService.updateProject(project).then(function (d) {
-            Notification.success('Project updated succesfully');
-        }, function (errResponse) {
-            Notification.error('Error while updating project');
-        });
+        if($scope.project.name==null || $scope.project.name==""){
+            Notification.warning('please provide project name');
+        }else if($scope.project.startDate==null){
+            Notification.warning('please provide a start date');
+        }else if($scope.project.endDate){
+            Notification.warning('please provide a end date');
+        }else if($scope.project.endDate.getTime()<$scope.project.startDate.getTime()){
+            Notification.warning('Project end date must be greater than start date');
+        }else{
+            AdminService.updateProject(project).then(function (d) {
+                Notification.success('Project updated succesfully');
+            }, function (errResponse) {
+                Notification.error('Error while updating project');
+            });
+        }
     }
     init();
 

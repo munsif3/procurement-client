@@ -10,7 +10,6 @@ angular.module('app').controller('departmentController',['$scope','AdminService'
 
 
     $scope.addDepartment = function () {
-<<<<<<< HEAD
         if($scope.department.departmentName==null ||$scope.department.departmentName =="" ){
             Notification.success('Please provide a department name');
         }else{
@@ -22,19 +21,11 @@ angular.module('app').controller('departmentController',['$scope','AdminService'
             });
         }
 
-=======
-        AdminService.addDepartment($scope.department).then(function (d) {
-            Notification.success('New department added successfully');
-            init();
-        }, function (errResponse) {
-            Notification.error('error while adding department');
-        });
->>>>>>> ecbf50a95e6b851d014e66ec6e6f0f1e1eb95800
     }
 
     var init = function(){
         AdminService.getAllDepartments().then(function (d) {
-           $scope.departments=d;
+            $scope.departments=d;
         }, function (errResponse) {
             console.log("error");
         });

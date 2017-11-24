@@ -14,34 +14,24 @@ angular.module('app').controller('UserUpdateController',['$scope','AdminService'
 
 
     $scope.updateUser = function (user) {
-<<<<<<< HEAD
-        if(user.name==null ||user.name=="" ){
+        if (user.name == null || user.name == "") {
             Notification.warning('Please provide a Empoyee Name');
-        }else if(user.nic==null ||user.nic=="" ){
+        } else if (user.nic == null || user.nic == "") {
             Notification.warning('Please provide a nic number');
-        }else if(!validateNIC(user.nic)){
+        } else if (!validateNIC(user.nic)) {
             Notification.warning('Wrong format of nic number');
-        } else if(user.contactNo==null || user.contactNo==""){
+        } else if (user.contactNo == null || user.contactNo == "") {
             Notification.warning('Please provide a contact number');
-        }else if(user.contactNo.length != 10 || !angular.isNumber(parseInt(user.contactNo))){
+        } else if (user.contactNo.length != 10 || !angular.isNumber(parseInt(user.contactNo))) {
             Notification.warning('Wrong Format of contact number');
         }
-        else{
+        else {
             AdminService.updateUser(user).then(function (d) {
                 Notification.success('User updated succesfully');
             }, function (errResponse) {
                 Notification.error('Error while updating user');
             });
         }
-
-=======
-        console.log(user);
-        AdminService.updateUser(user).then(function (d) {
-            Notification.success('User updated succesfully');
-        }, function (errResponse) {
-            Notification.error('Error while updating user');
-        });
->>>>>>> ecbf50a95e6b851d014e66ec6e6f0f1e1eb95800
     }
     init();
 
