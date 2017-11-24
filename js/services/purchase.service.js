@@ -66,10 +66,17 @@ function PurchaseOrderService($http) {
         },
         getSupplierDetails: function () {
             return $http
-                .get("http://localhost:8080/api/suppliers")
+                .get("http://localhost:8080/api/suppliers/")
                 .then(function (response) {
                     return response.data;
                 });
         }
+        // updatePurchaseOrder: function (purchase) {
+        //     $http
+        //       .post("http://localhost:8080/api/purchaseOrders/", purchase)
+        //       .then(function (response) {
+        //         return response;
+        //       });
+        //   }
     };
 }
