@@ -69,4 +69,19 @@ angular.module('app').factory('PurchaseHistoryService',['$http','$q',function($h
         return deferred.promise;
     }
 
+
+    function getLoggedUserDetails(username){
+        var deferred = $q.defer();
+        $http.get("http://localhost:8080/api/user/" + username)
+            .then(
+                function (response) {
+                    deferred.resolve(response.data);
+                },
+                function(errResponse){
+                    deferred.reject(errResponse);
+                }
+            );
+        return deferred.promise;
+    }
+
 }]);
