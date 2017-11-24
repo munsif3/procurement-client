@@ -1,0 +1,49 @@
+<div class="col-sm-12" ng-controller="purchaseOrderCtrl" ng-init="getApprovedPurchaseOrders()">
+    <div class="card-body">
+        <form class="form-inline">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="search">Search</label>
+                        <input type="text" class="form-control" id="search" placeholder="Enter value to search" ng-model="search" required>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-align-justify"></i> List of Pending Purchase Orders
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Purchase Id</th>
+                        <th>Requested Date</th>
+                        <th>Approved Date</th>
+                        <th>Status</th>
+                        <th>Comments</th>
+                        <th>Approved By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr dir-paginate="order in purchaseOrders|filter:search|itemsPerPage:10">
+                        <td>
+                            {{order.purchaseId}}
+                        </td>
+                        <td>{{order.requestedDate}}</td>
+                        <td>{{order.approvedDate}}</td>
+                        <td>{{order.status}}</td>
+                        <td>{{order.comments}}</td>
+                        <td>{{order.approvedBy.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="pagination">
+                <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                </dir-pagination-controls>
+            </ul>
+        </div>
+    </div>
+</div>

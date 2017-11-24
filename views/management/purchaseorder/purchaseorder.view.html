@@ -1,13 +1,3 @@
-<script>
-    jQuery(function () {
-        jQuery('#authorize-button').click();
-        // location.reload();
-    });
-    // $('#authorize-button').trigger('click');
-    // document.getElementById('#authorize-button').onclick = function () {
-    //     alert("button was clicked");
-    // }​;​
-</script>
 <div class="row" ng-controller="purchaseOrderCtrl" ng-init="getPurchaseOrderById()">
     <div class="col-sm-12">
         <form>
@@ -84,26 +74,34 @@
                                 <table class="table table-hover table-bordered">
                                     <tr>
                                         <td>
-                                            <label>Item</label>
+                                            <label>Item No</label>
                                         </td>
                                         <td>
-                                            <label>Quantity</label>
+                                            <label>Item Name</label>
+                                        </td>
+                                        <td>
+                                            <label>Ordered Quantity</label>
+                                        </td>
+                                        <td>
+                                            <label>Unit</label>
                                         </td>
                                     </tr>
-                                    <tr ng-repeat="item in selectedPurchaseOrders.purchaseOrderItemList">
-                                        <td>{{item.purchaseOrderItemPK.itemNo}}</td>
-                                        <td>{{item.orderedQuantity}}</td>
+                                    <tr ng-repeat="item in selectedPurchaseOrders.items">
+                                        <td>{{item.itemId}}</td>
+                                        <td>{{item.itemName}}</td>
+                                        <td>{{selectedPurchaseOrders.purchaseOrderItemList[0].orderedQuantity}}</td>
+                                        <td>{{item.unitOfMeasurement}}</td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
                     </div>
                     <div>
-                            <!-- value="immsf5@gmail.com" -->
-                        <label hidden id="supplier-email" >immsf5@gmail.com</label>
+                        <!-- value="immsf5@gmail.com" -->
+                        <label hidden id="supplier-email">immsf5@gmail.com</label>
                         <label hidden id="message-subject">Purchase Order Approved</label>
-                        <label hidden id="message-body">{{item.purchaseOrderItemPK.itemNo}} of {{item.purchaseOrderItemPK.itemNo}} has been Ordered</label>
-
+                        <label hidden id="message-body">Purchase Order has been Approved</label>
+                        <!-- <label hidden id="message-body">{{item.purchaseOrderItemPK.itemNo}} of {{item.purchaseOrderItemPK.itemNo}} has been Ordered</label> -->
                     </div>
                     <!--/.row-->
                     <div class="row">
@@ -111,8 +109,7 @@
                             <div class="form-group">
                                 <label for="approval">Approval</label>
                                 <select id="itemId" name="approval" class="form-control" size="1" ng-model="selectedPurchaseOrders.approval">
-
-                                    <option value="0">Decline</option>
+                                    <option value="0">Keep on Waiting List</option>
                                     <option value="1">Approve</option>
                                 </select>
                             </div>
@@ -122,11 +119,7 @@
                 </div>
                 <div class="card-footer">
                     <button id="update-status" type="submit" class="btn btn-primary" ng-click="updatePurchaseOrder(selectedPurchaseOrders)">Update</button>
-                    <!-- <button type="reset" class="btn btn-danger"> Reset</button> -->
-
-                    <a id="authorize-button" class="btn btn-primary pull-right hidden">Authorize</a>
-
-                    <!-- <a id="compose-button" class="btn btn-primary pull-right hidden">Compose</a> -->
+                    <a id="authorize-button" class="btn btn-primary pull-right hidden"></a>
                 </div>
             </div>
         </form>
