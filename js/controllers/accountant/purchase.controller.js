@@ -2,12 +2,15 @@ angular
     .module('app')
     .controller("purchaseOrderController", purchaseOrderController);
 
-purchaseOrderController.$inject = ['$scope', '$timeout', '$state', '$rootScope', '$stateParams', 'PurchaseOrderService'];
+purchaseOrderController.$inject = ['$scope', '$timeout', '$state', '$filter','$rootScope', '$stateParams', 'PurchaseOrderService'];
 
-function purchaseOrderController($scope, $timeout, $state, $rootScope, $stateParams, PurchaseOrderService) {
+function purchaseOrderController($scope, $timeout, $state, $filter,$rootScope, $stateParams, PurchaseOrderService) {
 
     let currentUser = $rootScope.globals.currentUser;
     console.log(currentUser);
+
+    $scope.preparedDate = $filter("date")(Date.now(), 'yyyy-MM-dd');
+    console.log(preparedDate);
     /**
      * 
      */
@@ -23,11 +26,25 @@ function purchaseOrderController($scope, $timeout, $state, $rootScope, $statePar
         })
     }
 
+    $scope.getSupplierItemDetails = function () {
+        PurchaseOrderService.getSupplierItemDetails().then(supItems => {
+            console.log(supItems)
+            $scope.supplierItems = supItems;
+        })
+    }
+
+    $scope.getSupplierDetails = function () {
+        PurchaseOrderService.getSupplierDetails().then(supplier => {
+            console.log(supplier)
+            $scope.suppliers = supplier;
+        })
+    }
+
     $scope.getPurchaseOrderById = function () {
         // console.log(purchaseId)
         PurchaseOrderService.getPurchaseOrderById($stateParams.purchaseId)
             .then(purchases => {
-                // console.log(purchases)
+                console.log(purchases)
                 $scope.selectedPurchases = purchases;
 
             })
@@ -41,4 +58,7 @@ function purchaseOrderController($scope, $timeout, $state, $rootScope, $statePar
             $scope.userDetails = user;
         })
     }
+
+    
+    
 }
