@@ -5,13 +5,13 @@
         </div>
         <div class="card-body">
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label>Item</label>
                         <select ng-model="requisition.product" ng-options="item.itemName for item in items | filter:search" class="form-control"></select>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="form-group">
                         <label>Quantity</label>
                         <input type="number" ng-model="requisition.orderedQuantity" class="form-control"  placeholder="Quantity" required>
