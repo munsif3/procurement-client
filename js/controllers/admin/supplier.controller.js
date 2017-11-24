@@ -32,15 +32,21 @@ angular.module('app').controller('SupplierController',['$scope','AdminService','
     }
 
     $scope.addSupplier=function(supplier){
-        supplier.personNo=supplier.personNumber.personNo;
-        delete supplier.personNumber;
-        console.log(supplier)
-        AdminService.addSupplier(supplier).then(function (d) {
-            Notification.success('Added Supplier successfully');
-            init();
-        }, function (errResponse) {
-            Notification.error('The person already exist as a supplier');
-        });
+        if(supplier.companyName==null ||supplier.companyName==""){
+            Notification.warning('Please provide a company name');
+        }else if(supplier.contractedDate==null){
+            Notification.warning('Please provide a contracted date ');
+        }else{
+            supplier.personNo=supplier.personNumber.personNo;
+            delete supplier.personNumber;
+            console.log(supplier)
+            AdminService.addSupplier(supplier).then(function (d) {
+                Notification.success('Added Supplier successfully');
+                init();
+            }, function (errResponse) {
+                Notification.error('The person already exist as a supplier');
+            });
+        }
     }
 
     $scope.openModal = function(supplier){

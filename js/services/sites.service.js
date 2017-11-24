@@ -2,21 +2,27 @@ angular.module("app").factory("SiteService", SiteService);
 
 SiteService.$inject = ["$http"];
 
-function SiteService($http) 
-{
+function SiteService($http) {
   return {
-    get: function() {
+    get: function () {
       return $http
-        .get("http://demo8342094.mockable.io/sites")
-        .then(function(response) {
+        .get("http://localhost:8080/sites/")
+        .then(function (response) {
           return response.data;
         });
     },
-    getSitebySiteId: function(id) {
+    getSitebySiteId: function (id) {
       return $http
         .get("http://localhost:8080/sites/" + id)
-        .then(function(response) {
+        .then(function (response) {
           return response.data;
+        });
+    },
+    addSite: function (site) {
+      $http
+        .post("http://localhost:8080/sites/", site)
+        .then(function (response) {
+          return response;
         });
     }
   };

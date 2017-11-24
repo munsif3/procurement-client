@@ -7,17 +7,14 @@ angular.module('app').controller('EmployeeController',['$scope','AdminService','
     $scope.user={};
     $scope.user.designation={};
     $scope.user.designation=$scope.designations[0];
-
-    var validateNIC=function(value){
-        return (value.length==10 && (value.slice(-1)=='V' || value.slice(-1)=='v') && angular.isNumber(parseInt(value.slice(0, 9))));
-    }
-
     var init = function(){
         getAllEmployees();
         getAllDepartments();
         getAllProjects();
     }
-
+    var validateNIC = function(value){
+        return (value.lengt==10 && (value.slice(-1)=='v' || value.slice(-1)=='V') && angular.isNumber(parseInt(value.slice(0,9))))
+    }
     var getAllEmployees=function(){
         AdminService.getAllEmployees().then(function (d) {
             $scope.users=d;
@@ -46,14 +43,7 @@ angular.module('app').controller('EmployeeController',['$scope','AdminService','
 
 
     $scope.addUser=function(user){
-        console.log(user)
-        AdminService.addEmployee(user).then(function (d) {
-            Notification.success('New user added successfully');
-            init();
-        }, function (errResponse) {
-            Notification.error('Error while adding new user');
-        });
-        console.log(user.contactNo.length);
+
         if(user.name==null ||user.name=="" ){
             Notification.warning('Please provide a Empoyee Name');
         }else if(user.nic==null ||user.nic=="" ){
@@ -72,6 +62,7 @@ angular.module('app').controller('EmployeeController',['$scope','AdminService','
                 Notification.error('Error while adding new user');
             });
         }
+
     }
 
     $scope.openModal = function(user){

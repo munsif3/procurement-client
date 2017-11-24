@@ -1,0 +1,42 @@
+<div ng-controller="ItemController" class="col-sm-12">
+    <div class="card">
+        <div class="card-header">
+            <i ></i> Make Requisition
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Item</label>
+                        <select ng-model="requisition.product" ng-options="item.itemName for item in items | filter:search" class="form-control"></select>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        <label>Quantity</label>
+                        <input type="number" ng-model="requisition.orderedQuantity" class="form-control"  placeholder="Quantity" required>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label>Purchase Expected Date</label>
+                        <input type="date" ng-model="requisition.purchaseExpectedDate" class="form-control"   required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="textarea-input">Comments</label>
+                        <textarea ng-model="requisition.comments" rows="5" class="form-control" placeholder="Your Comments" required></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <button type="submit" ng-click="addRequisitionOrder(requisition)" class="btn btn-primary">Submit</button>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</div>
