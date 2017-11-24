@@ -31,11 +31,11 @@ angular.module('app').controller('ItemController',['$scope','PurchaseHistoryServ
             Notification.error('Error while placing your requisitiionorder');
         });
 
-        PurchaseHistoryService.addPurchaseOrderItem(requisition).then(function (d) {
-            Notification.success('Your items are saved');
-    }, function (errResponse) {
-            Notification.error('Error while placing your ordered item');
-        });
+    //     PurchaseHistoryService.addPurchaseOrderItem(requisition).then(function (d) {
+    //         Notification.success('Your items are saved');
+    // }, function (errResponse) {
+    //         Notification.error('Error while placing your ordered item');
+    //     });
     }
 
 
