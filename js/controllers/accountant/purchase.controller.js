@@ -93,4 +93,18 @@ function purchaseOrderController($scope, $timeout, $state, $filter, $rootScope, 
 
         $scope.requestItems = units;
     }
+
+    $scope.getTotal = function(){
+        var total = 0;
+        for(var i = 0; i < $scope.requestItems.supitems.length; i++){
+            var r = $scope.requestItems.supitems[i];
+            total += (r.orderedQuantity * r.newsupp.unitPrice);
+        }
+        console.log(total);
+        return total;
+    }
+
+    $scope.getOrderStatus = function(){
+        return "Pending";
+    }
 }
