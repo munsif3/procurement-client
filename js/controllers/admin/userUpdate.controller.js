@@ -14,6 +14,7 @@ angular.module('app').controller('UserUpdateController',['$scope','AdminService'
 
 
     $scope.updateUser = function (user) {
+<<<<<<< HEAD
         if(user.name==null ||user.name=="" ){
             Notification.warning('Please provide a Empoyee Name');
         }else if(user.nic==null ||user.nic=="" ){
@@ -33,6 +34,14 @@ angular.module('app').controller('UserUpdateController',['$scope','AdminService'
             });
         }
 
+=======
+        console.log(user);
+        AdminService.updateUser(user).then(function (d) {
+            Notification.success('User updated succesfully');
+        }, function (errResponse) {
+            Notification.error('Error while updating user');
+        });
+>>>>>>> ecbf50a95e6b851d014e66ec6e6f0f1e1eb95800
     }
     init();
 
