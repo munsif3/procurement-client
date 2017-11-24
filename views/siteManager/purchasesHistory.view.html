@@ -22,7 +22,8 @@
                                     <th>Purchase Id</th>
                                     <th>Project Name</th>
                                     <th>Site Address</th>
-                                    <th>Requested By</th>
+                                    <th>Item</th>
+                                    <th>Ordered Quantity</th>
                                     <th>Requested Date</th>
                                     <th>Purchase Expected Date</th>
                                     <th>Status</th>
@@ -32,12 +33,11 @@
                               <tr dir-paginate="purchase in purchases|filter:search|itemsPerPage:10">
                                     <td>{{purchase.purchaseId}}</td>
                                     <td>{{purchase.requestedBy.project.name}}</td>
-                                    <!-- <td>{{purchase.requestedBy.project.site.address}}</td> -->
-                                    <td> A2/5 kotehena</td>
-                                    <!-- <td>{{purchase.requestedBy.name}}</td> -->
-                                    <td>Kiruthika Balendran</td>
+                                    <td>{{purchase.requestedBy.project.site.address}}</td>
+                                    <td> Cement</td>
+                                    <td>{{purchase.purchaseOrderItemList[0].orderedQuantity}}</td>
                                     <td>{{purchase.requestedDate}}</td>
-                                    <td>{{purchase. purchaseExpectedDate}}</td>
+                                    <td>{{purchase.purchaseExpectedDate}}</td>
                                     <td>{{purchase.status}}</td>
                               </tr>
                         </tbody>

@@ -17,11 +17,19 @@ angular.module('app').controller('ItemController',['$scope','PurchaseHistoryServ
         });
     }
 
+    // getLoggedUserDetails = function (username) {
+    //     PurchaseOrderService.getLoggedUserDetails(username).then(user => {
+    //         console.log(user);
+    //         $scope.requisition.requester = user;
+    //     })
+    // }
         
     $scope.addRequisitionOrder =function(requisition){
         console.log(requisition);
         $scope.requisition.status = "Placed";
         $scope.requisition.requestedDate = new Date();
+        //$scope.requisition.requester = 4;
+        //requisition.requestedBy = $scope.requisition.requester;
         
 
 

@@ -11,6 +11,7 @@ angular.module('app').controller('PurchaseHistoryController',['$scope','Purchase
     var getPurchaseHistory=function(){
         PurchaseHistoryService.getPurchaseHistory().then(function (d) {
             $scope.purchases=d;
+            console.log(d);
         }, function (errResponse) {
             console.log("error");
         });
