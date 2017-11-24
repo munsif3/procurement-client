@@ -38,7 +38,7 @@ function handleAuthResult(authResult) {
 }
 
 function loadGmailApi() {
-    gapi.client.load('gmail', 'v1', displayInbox); 
+    gapi.client.load('gmail', 'v1', displayInbox);
 }
 
 function displayInbox() {
@@ -62,7 +62,7 @@ function displayInbox() {
 
         sendMessage({
                 'To': $('#supplier-email').val(),
-                'Subject':$('#message-subject').val()
+                'Subject': $('#message-subject').val()
             },
             message,
             composeTidy
@@ -101,3 +101,4 @@ function displayInbox() {
         $('#send-button').removeClass('disabled');
     }
 }
+// });
