@@ -52,7 +52,7 @@ angular
   })
   .state('app.main', {
     url: '/dashboard',
-    templateUrl: 'views/main.html',
+    templateUrl: 'views/Admin/supplierHistory.html',
     //page title goes here
     ncyBreadcrumb: {
       label: 'Home',
