@@ -8,14 +8,20 @@
 
 angular.module('app').controller('departmentController',['$scope','AdminService','$state','Notification',function ($scope,AdminService,$state,Notification) {
 
+    $scope.department={};
 
     $scope.addDepartment = function () {
-        AdminService.addDepartment($scope.department).then(function (d) {
-            Notification.success('New department added successfully');
-            init();
-        }, function (errResponse) {
-            Notification.error('error while adding department');
-        });
+        if($scope.department.departmentName==null || $scope.department.departmentName==""){
+            Notification.warning('Please provide a name for department');
+        }else{
+            AdminService.addDepartment($scope.department).then(function (d) {
+                Notification.success('New department added successfully');
+                init();
+            }, function (errResponse) {
+                Notification.error('error while adding department');
+            });
+        }
+
     }
 
     var init = function(){

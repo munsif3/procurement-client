@@ -7,6 +7,11 @@ angular.module('app').controller('EmployeeController',['$scope','AdminService','
     $scope.user={};
     $scope.user.designation={};
     $scope.user.designation=$scope.designations[0];
+
+    var validateNIC=function(value){
+        return (value.length==10 && (value.slice(-1)=='V' || value.slice(-1)=='v') && angular.isNumber(parseInt(value.slice(0, 9))));
+    }
+
     var init = function(){
         getAllEmployees();
         getAllDepartments();
@@ -48,6 +53,25 @@ angular.module('app').controller('EmployeeController',['$scope','AdminService','
         }, function (errResponse) {
             Notification.error('Error while adding new user');
         });
+        console.log(user.contactNo.length);
+        if(user.name==null ||user.name=="" ){
+            Notification.warning('Please provide a Empoyee Name');
+        }else if(user.nic==null ||user.nic=="" ){
+            Notification.warning('Please provide a nic number');
+        }else if(!validateNIC(user.nic)){
+            Notification.warning('Wrong format of nic number');
+        } else if(user.contactNo==null || user.contactNo==""){
+            Notification.warning('Please provide a contact number');
+        }else if(user.contactNo.length != 10 || !angular.isNumber(parseInt(user.contactNo))){
+            Notification.warning('Wrong Format of contact number');
+        }else{
+            AdminService.addEmployee(user).then(function (d) {
+                Notification.success('New user added successfully');
+                init();
+            }, function (errResponse) {
+                Notification.error('Error while adding new user');
+            });
+        }
     }
 
     $scope.openModal = function(user){

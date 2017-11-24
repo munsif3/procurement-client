@@ -10,6 +10,8 @@ angular.module('app').controller('EmployeeUpdateController',['$scope','AdminServ
 
     $scope.project={};
 
+
+
     var init=function(){
         AdminService.getEmployee($stateParams.id).then(function (d) {
             $scope.user=d;

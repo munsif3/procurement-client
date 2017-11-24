@@ -1,0 +1,63 @@
+<div ng-controller="SupplierHistoryReviewController" class="col-sm-12 supplier-card">
+    <div class="card text-white bg-dark mb-3" style="max-width: 85rem;" style="max-height:90rem;">
+
+        <div class="card-header" style="font-size:30px;">
+            Suplier Review - {{supplier.supplierId}}
+            <div style="margin-top: -55px;" ng-click="redirectToView()">
+                <span class="icon-close icons h4 d-block mt-4 float-right"></span>
+            </div>
+
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">Primary Supplier Details</h4>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Company Name</th>
+                    <th>Contracted Date</th>
+                    <th>Approximate Delivery days</th>
+                    <th>Delivery Charge Percentage</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-click="openModal(supplier)" >
+                    <td>{{supplier.user.name}}</td>
+                    <td>{{supplier.companyName}}</td>
+                    <td>{{supplier.contractedDate}}</td>
+                    <td>{{supplier.approximateDelivaryDays}}</td>
+                    <td>{{supplier.deliveryChargePercent}}</td>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p>
+                <button class="btn btn-primary" data-toggle="collapse" href="#contactDetails" aria-expanded="false" aria-controls="contactDetails">
+                    Contact Details
+                </button>
+            </p>
+            <div class="collapse" id="contactDetails">
+                <div >
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>NIC</th>
+                            <th>Contact Number</th>
+                            <th>Email</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr  >
+                            <td>{{supplier.user.nic}}</td>
+                            <td>{{supplier.user.contactNo}}</td>
+                            <td>{{supplier.user.email}}</td>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
