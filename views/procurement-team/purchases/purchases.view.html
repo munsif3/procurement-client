@@ -1,4 +1,4 @@
-<div class="col-sm-12">
+<div ng-controller="purchaseOrderController" ng-init="getPurchaseOrderHistory()" class="col-sm-12">
     <div class="card-body">
           <form class="form-inline">
                 <div class="row">
@@ -20,38 +20,32 @@
                       <thead>
                             <tr>
                                   <th>Purchase ID</th>
-                                  <th>Requisition ID</th>
-                                  <th>Supplier ID</th>
+                                  <th>Accountant Code</th>
+                                  <th>Accountant Name</th>
+                                  <th>Supplier Company</th>
                                   <th>Total Amount</th>
-                                  <th>Delivered Date</th>
+                                  <th>Prepared Date</th>
+                                  <th>Expected Date</th>
                                   <th>Status</th>
                                   <th>Comments</th>
                             </tr>
                       </thead>
                       <tbody>
-                            <tr dir-paginate="filter:search|itemsPerPage:1">
-                                  <td>PUR001</td>
-                                  <td>REQ001</td>
-                                  <td>SUP001</td>
-                                  <td>23650.00</td>
-                                  <td>2017-11-10</td>
-                                  <td>Delivered</td>
-                                  <td>Full Payment</td>
+                            <tr dir-paginate="purchase in purchases|filter:search|itemsPerPage:10">
+                              <td><a href="#">{{purchase.purchaseId}}</a></td>
+                              <td>{{purchase.preparedBy.employeeId}}</td>
+                              <td>{{purchase.preparedBy.name}}</td>
+                              <td>{{purchase.supplierNo.companyName}}</td>
+                              <td>{{purchase.totalAmount}}</td>
+                              <td>{{purchase.preparedDate}}</td>
+                              <td>{{purchase.purchaseExpectedDate}}</td>
+                              <td>{{purchase.status}}</td>
+                              <td>{{purchase.comments}}</td>
                             </tr>
-
-                            <tr dir-paginate="filter:search|itemsPerPage:1">
-                                    <td>PUR005</td>
-                                    <td>REQ002</td>
-                                    <td>SUP002</td>
-                                    <td>27480.00</td>
-                                    <td>2017-11-09</td>
-                                    <td>Delivered</td>
-                                    <td>Full Payment</td>
-                              </tr>
                       </tbody>
                 </table>
                 <ul class="pagination">
-                      <dir-pagination-controls max-size="1" direction-links="true" boundary-links="true">
+                      <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true">
                       </dir-pagination-controls>
                 </ul>
           </div>

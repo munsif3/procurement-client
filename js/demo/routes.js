@@ -56,6 +56,24 @@ angular
                 label: 'Add Supplier Item'
             }
         })
+        .state('app.management.viewPurchaseOrders', {
+            url: '/purchase/view',
+            templateUrl: 'views/management/purchaseorder/purchaseorders.view.html',
+            ncyBreadcrumb: {
+                label: 'View Purchase Orders'
+            }
+        })
+        .state('app.management.viewPurchaseOrder', {
+            url: '/purchase/view/{purchaseOrderId}',
+            templateUrl: 'views/management/purchaseorder/purchaseorder.view.html',
+            ncyBreadcrumb: {
+                label: 'View Purchase Order'
+            }
+        })
+
+
+
+
         .state('app.admin', {
             url: "/admin",
             abstract: true,
@@ -163,7 +181,7 @@ angular
           }
       })
       .state('app.accounting.addQuotations', {
-          url: '/quotations/add',
+          url: '/quotations/add/{purchaseId}',
           templateUrl: 'views/procurement-team/quotations/quotations.add.html',
           ncyBreadcrumb: {
               label: 'Add Quotations'
@@ -181,6 +199,23 @@ angular
           templateUrl: 'views/procurement-team/purchases/purchases.view.html',
           ncyBreadcrumb: {
               label: 'View Purchases'
+          }
+      })
+
+
+      .state('app.accounting.viewPurchasesHistory', {
+          url: '/purchasesHistory/view',
+          templateUrl: 'views/siteManager/purchasesHistory.view.html',
+          ncyBreadcrumb: {
+              label: 'View PurchasesHistory'
+          }
+      })
+
+      .state('app.accounting.addRequisition', {
+          url: '/requisition/add',
+          templateUrl: 'views/siteManager/requisition.add.html',
+          ncyBreadcrumb: {
+              label: 'Add Requisition'
           }
       })
 

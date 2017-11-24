@@ -1,0 +1,112 @@
+<div class="row" ng-controller="purchaseOrderCtrl" ng-init="getPurchaseOrderById()">
+    <div class="col-sm-12">
+        <form>
+            <div class="card">
+                <div class="card-header">
+                    <strong>Purchase Order Details</strong>
+                    <small>Form</small>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="purchaseOrderId">Purchase Order Id</label>
+                                <input type="text" ng-model="selectedPurchaseOrders.purchaseId" class="form-control" id="purchaseOrderId" placeholder="Enter Purchase Order Id"
+                                    readonly required>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.row-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="requestedDate">Requested Date</label>
+                                <input type="text" ng-model="selectedPurchaseOrders.requestedDate" class="form-control" id="requestedDate" placeholder="Enter Requested Date"
+                                    readonly required>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.row-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="totalAmount">Total Amount</label>
+                                <input type="text" ng-model="selectedPurchaseOrders.totalAmount" class="form-control" id="totalAmount" placeholder="Enter Total Amount"
+                                    readonly required>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.row-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="comments">Comments</label>
+                                <input type="text" ng-model="selectedPurchaseOrders.comments" class="form-control" id="comments" placeholder="Enter Comments"
+                                    readonly required>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.row-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="supplier">Supplier</label>
+                                <input type="text" ng-model="selectedPurchaseOrders.supplierNo.companyName" class="form-control" id="supplier" placeholder="Enter Supplier"
+                                    readonly required>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.row-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="supplier">Status</label>
+                                <input type="text" ng-model="selectedPurchaseOrders.status" class="form-control" id="supplier" placeholder="Enter Supplier"
+                                    readonly required>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.row-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="supplier">Requested Items</label>
+                                <table class="table table-hover table-bordered">
+                                    <tr>
+                                        <td><label>Item</label></td>
+                                        <td><label>Quantity</label></td>
+                                    </tr>
+                                    <tr ng-repeat="item in selectedPurchaseOrders.purchaseOrderItemList">
+                                        <td>{{item.purchaseOrderItemPK.itemNo}}</td>
+                                        <td>{{item.orderedQuantity}}</td>
+                                    </tr>
+                                </table>
+                                <!-- <ul ng-repeat="item in selectedPurchaseOrders.purchaseOrderItemList">
+
+                                </ul> -->
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.row-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                                <label for="approval">Approval</label>
+                                <select id="itemId" name="approval" class="form-control" size="1" ng-model="selectedPurchaseOrders.approval">
+                                    <option value="0">Decline</option>
+                                    <option value="1">Approve</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/.row-->
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary" ng-click="updatePurchaseOrder(selectedPurchaseOrders)">Update</button>
+                    <!-- <button type="reset" class="btn btn-danger"> Reset</button> -->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

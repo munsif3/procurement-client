@@ -1,0 +1,49 @@
+<div class="col-sm-12" ng-controller="purchaseOrderCtrl" ng-init="getPendingPurchaseOrders()">
+    <div class="card-body">
+        <form class="form-inline">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="search">Search</label>
+                        <input type="text" class="form-control" id="search" placeholder="Enter value to search" ng-model="search" required>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-align-justify"></i> List of Pending Purchase Orders
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Purchase Id</th>
+                        <th>Requested Date</th>
+                        <th>Expected Date</th>
+                        <th>Status</th>
+                        <th>Comments</th>
+                        <th>Requested By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr dir-paginate="order in purchaseOrders|filter:search|itemsPerPage:10">
+                        <td>
+                            <a ui-sref="app.management.viewPurchaseOrder({purchaseOrderId: order.purchaseId})">{{order.purchaseId}}</a>
+                        </td>
+                        <td>{{order.requestedDate}}</td>
+                        <td>{{order.purchaseExpectedDate}}</td>
+                        <td>{{order.status}}</td>
+                        <td>{{order.comments}}</td>
+                        <td>{{order.requestedBy.name}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="pagination">
+                <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true">
+                </dir-pagination-controls>
+            </ul>
+        </div>
+    </div>
+</div>

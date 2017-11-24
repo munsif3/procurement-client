@@ -1,4 +1,4 @@
-<div class="col-sm-12" ng-controller="siteDetailsCtrl" ng-init="getSites()">
+<div class="col-sm-12" ng-controller="PurchaseHistoryController">
       <div class="card-body">
             <form class="form-inline">
                   <div class="row">
@@ -13,22 +13,30 @@
       </div>
       <div class="card">
             <div class="card-header">
-                  <i class="fa fa-align-justify"></i> List of Construction Sites
+                  <i class="fa fa-align-justify"></i> Purchase History
             </div>
             <div class="card-body">
                   <table class="table table-striped">
                         <thead>
                               <tr>
-                                    <th>Site Id</th>
-                                    <th>Site Name</th>
+                                    <th>Purchase Id</th>
+                                    <th>Project Name</th>
                                     <th>Site Address</th>
+                                    <th>Requested By</th>
+                                    <th>Requested Date</th>
+                                    <th>Purchase Expected Date</th>
+                                    <th>Status</th>
                               </tr>
                         </thead>
                         <tbody>
-                              <tr dir-paginate="site in sites|filter:search|itemsPerPage:10">
-                                    <td>{{site.siteNo}}</td>
-                                    <td>{{site.siteName}}</td>
-                                    <td>{{site.address}}</td>
+                              <tr dir-paginate="purchase in purchases|filter:search|itemsPerPage:10">
+                                    <td>{{purchase.purchaseId}}</td>
+                                    <td>{{purchase.requestedBy.project.name}}</td>
+                                    <td>{{purchase.requestedBy.project.site.address}}</td>
+                                    <td>{{purchase.requestedBy.name}}</td>
+                                    <td>{{purchase.requestedDate}}</td>
+                                    <td>{{purchase. purchaseExpectedDate}}</td>
+                                    <td>{{purchase.status}}</td>
                               </tr>
                         </tbody>
                   </table>
