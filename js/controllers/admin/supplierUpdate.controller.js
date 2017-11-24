@@ -30,14 +30,21 @@ angular.module('app').controller('SupplierUpdateController',['$scope','AdminServ
 
 
     $scope.updateSupplier = function (supplier) {
-        supplier.personNo=supplier.personNumber.personNo;
-        delete supplier.personNumber;
-        AdminService.updateSupplier(supplier).then(function (d) {
-            Notification.success('Supplier updated succesfully');
-            init();
-        }, function (errResponse) {
-            Notification.error('Already existing supplier');
-        });
+        if(supplier.companyName==null ||supplier.companyName==""){
+            Notification.warning('Please provide a company name');
+        }else if(supplier.contractedDate==null){
+            Notification.warning('Please provide a contracted date ');
+        }else{
+            supplier.personNo=supplier.personNumber.personNo;
+            delete supplier.personNumber;
+            AdminService.updateSupplier(supplier).then(function (d) {
+                Notification.success('Supplier updated succesfully');
+                init();
+            }, function (errResponse) {
+                Notification.error('Already existing supplier');
+            });
+        }
+
     }
     init();
 

@@ -157,6 +157,22 @@ angular
               label: 'Supplier'
           }
       })
+      .state('app.admin.supplierHistory', {
+          url: '/supplier/history/',
+
+          templateUrl: 'views/Admin/supplierHistory.html',
+          ncyBreadcrumb: {
+              label: 'Supplier'
+          }
+      })
+      .state('app.admin.reviewSupplierHistory', {
+          url: '/supplier/history/:id',
+
+          templateUrl: 'views/Admin/supplierHistoryReview.html',
+          ncyBreadcrumb: {
+              label: 'Supplier'
+          }
+      })
       .state('app.accounting', {
           url: "/accounting",
           abstract: true,
@@ -199,6 +215,23 @@ angular
           templateUrl: 'views/procurement-team/purchases/purchases.view.html',
           ncyBreadcrumb: {
               label: 'View Purchases'
+          }
+      })
+
+
+      .state('app.accounting.viewPurchasesHistory', {
+          url: '/purchasesHistory/view',
+          templateUrl: 'views/siteManager/purchasesHistory.view.html',
+          ncyBreadcrumb: {
+              label: 'View PurchasesHistory'
+          }
+      })
+
+      .state('app.accounting.addRequisition', {
+          url: '/requisition/add',
+          templateUrl: 'views/siteManager/requisition.add.html',
+          ncyBreadcrumb: {
+              label: 'Add Requisition'
           }
       })
 

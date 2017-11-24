@@ -33,12 +33,23 @@ angular.module('app').controller('ProjectController',['$scope','AdminService','$
     }
 
     $scope.addProject=function(){
-        AdminService.addProject($scope.project).then(function (d) {
-            Notification.success('New Project added successfully');
-            init();
-        }, function (errResponse) {
-            Notification.error('error while adding project');
-        });
+        if($scope.project.name==null || $scope.project.name==""){
+            Notification.warning('please provide project name');
+        }else if($scope.project.startDate==null){
+            Notification.warning('please provide a start date');
+        }else if($scope.project.endDate){
+            Notification.warning('please provide a end date');
+        }else if($scope.project.endDate.getTime()<$scope.project.startDate.getTime()){
+            Notification.warning('Project end date must be greater than start date');
+        }else{
+            AdminService.addProject($scope.project).then(function (d) {
+                Notification.success('New Project added successfully');
+                init();
+            }, function (errResponse) {
+                Notification.error('error while adding project');
+            });
+        }
+
     }
 
     $scope.openModal = function(project){
