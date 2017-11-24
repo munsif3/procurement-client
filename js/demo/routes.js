@@ -139,22 +139,6 @@ angular
               label: 'Supplier'
           }
       })
-      .state('app.admin.supplierHistory', {
-          url: '/supplier/history',
-
-          templateUrl: 'views/Admin/supplierHistory.html',
-          ncyBreadcrumb: {
-              label: 'Supplier History'
-          }
-      })
-      .state('app.admin.reviewSupplierHistory', {
-          url: '/supplier/review/:id',
-
-          templateUrl: 'views/Admin/supplierHistoryReview.html',
-          ncyBreadcrumb: {
-              label: 'Supplier History Review'
-          }
-      })
       .state('app.accounting', {
           url: "/accounting",
           abstract: true,

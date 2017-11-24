@@ -15,7 +15,7 @@ angular.module('app').controller('UserUpdateController',['$scope','AdminService'
 
     $scope.updateUser = function (user) {
         console.log(user);
-            AdminService.updateUser(user).then(function (d) {
+        AdminService.updateUser(user).then(function (d) {
             Notification.success('User updated succesfully');
         }, function (errResponse) {
             Notification.error('Error while updating user');

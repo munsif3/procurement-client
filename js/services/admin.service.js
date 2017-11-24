@@ -22,8 +22,7 @@ angular.module('app').factory('AdminService',['$http','$q',function($http,$q){
         getAllSuppliers:getAllSuppliers,
         addSupplier:addSupplier,
         getSupplier:getSupplier,
-        updateSupplier:updateSupplier,
-        getAllPurchaseOrders:getAllPurchaseOrders
+        updateSupplier:updateSupplier
 
     };
 
@@ -301,19 +300,6 @@ angular.module('app').factory('AdminService',['$http','$q',function($http,$q){
     function updateSupplier(supplier){
         var deferred = $q.defer();
         $http.put("http://localhost:8080/api/supplier",supplier)
-            .then(
-                function (response) {
-                    deferred.resolve(response.data);
-                },
-                function(errResponse){
-                    deferred.reject(errResponse);
-                }
-            );
-        return deferred.promise;
-    }
-    function getAllPurchaseOrders(){
-        var deferred = $q.defer();
-        $http.get("http://localhost:8080/purchaseOrders")
             .then(
                 function (response) {
                     deferred.resolve(response.data);
