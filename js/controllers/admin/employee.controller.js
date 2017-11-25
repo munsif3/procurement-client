@@ -3,7 +3,7 @@
  */
 angular.module('app').controller('EmployeeController',['$scope','AdminService','$state','Notification',function ($scope,AdminService,$state,Notification) {
 
-    $scope.designations=["admin","managementstaff","accountingstaff","sitemanager"];
+    $scope.designations=["admin","managementstaff","accountingstaff","sitemanager","supplier"];
     $scope.user={};
     $scope.user.designation={};
     $scope.user.designation=$scope.designations[0];

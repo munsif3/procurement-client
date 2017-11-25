@@ -6,7 +6,7 @@
  */
 angular.module('app').controller('EmployeeUpdateController',['$scope','AdminService','$state','$stateParams','Notification','$rootScope',function ($scope,AdminService,$state,$stateParams,Notification,$rootScope) {
 
-    $scope.designations=["admin","managementstaff","accountingstaff","sitemanager"];
+    $scope.designations=["admin","managementstaff","accountingstaff","sitemanager","supplier"];
 
     $scope.project={};
 
