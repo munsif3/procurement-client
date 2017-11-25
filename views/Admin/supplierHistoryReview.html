@@ -5,7 +5,7 @@
             <div  ng-click="redirectToView()">
                 <span class="icon-close icons h4 d-block float-right"></span>
             </div>
-            Suplier Review - {{supplier.supplierId}}
+            Supplier Review - {{supplier.supplierId}}
 
 
         </div>
@@ -25,7 +25,7 @@
                 <tr ng-click="openModal(supplier)" >
                     <td>{{supplier.user.name}}</td>
                     <td>{{supplier.companyName}}</td>
-                    <td>{{supplier.contractedDate}}</td>
+                    <td>{{supplier.contractedDate|date:'yyyy-MM-dd'}}</td>
                     <td>{{supplier.approximateDelivaryDays}}</td>
                     <td>{{supplier.deliveryChargePercent}}</td>
                     </td>

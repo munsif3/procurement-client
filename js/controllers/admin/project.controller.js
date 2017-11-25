@@ -37,7 +37,7 @@ angular.module('app').controller('ProjectController',['$scope','AdminService','$
             Notification.warning('please provide project name');
         }else if($scope.project.startDate==null){
             Notification.warning('please provide a start date');
-        }else if($scope.project.endDate){
+        }else if($scope.project.endDate==null){
             Notification.warning('please provide a end date');
         }else if($scope.project.endDate.getTime()<$scope.project.startDate.getTime()){
             Notification.warning('Project end date must be greater than start date');

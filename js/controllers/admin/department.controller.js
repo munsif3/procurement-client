@@ -9,6 +9,8 @@
 angular.module('app').controller('departmentController',['$scope','AdminService','$state','Notification',function ($scope,AdminService,$state,Notification) {
 
 
+    $scope.department={};
+
     $scope.addDepartment = function () {
         if($scope.department.departmentName==null ||$scope.department.departmentName =="" ){
             Notification.success('Please provide a department name');
