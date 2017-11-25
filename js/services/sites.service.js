@@ -4,26 +4,22 @@ SiteService.$inject = ["$http"];
 
 function SiteService($http) {
   return {
-    get: function () {
+    get: function() {
+      return $http.get("http://localhost:8080/api/sites/").then(function(response) {
+        return response.data;
+      });
+    },
+    getSitebySiteId: function(id) {
       return $http
-        .get("http://localhost:8080/sites/")
-        .then(function (response) {
+        .get("http://localhost:8080/api/sites/" + id)
+        .then(function(response) {
           return response.data;
         });
     },
-    getSitebySiteId: function (id) {
-      return $http
-        .get("http://localhost:8080/sites/" + id)
-        .then(function (response) {
-          return response.data;
-        });
-    },
-    addSite: function (site) {
-      $http
-        .post("http://localhost:8080/sites/", site)
-        .then(function (response) {
-          return response;
-        });
+    saveSite: function(site) {
+      $http.post("http://localhost:8080/api/sites/", site).then(function(response) {
+        return response.data;
+      });
     }
   };
 }

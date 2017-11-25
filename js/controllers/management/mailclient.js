@@ -28,7 +28,6 @@ function handleAuthResult(authResult) {
     if (authResult && !authResult.error) {
         loadGmailApi();
         $('#authorize-button').remove();
-        $('#compose-button').removeClass("hidden");
     } else {
         $('#authorize-button').removeClass("hidden");
         $('#authorize-button').on('click', function () {
@@ -49,22 +48,21 @@ function displayInbox() {
     });
 
     $('#update-status').on('click', function () {
-        sendEmail();
+        if ($('#itemId').val() == 1) {
+            console.log("in 1")
+            sendEmail();
+        } else {
+            console.log("in 0")
+
+        }
     });
 
     function sendEmail() {
-        // $('#send-button').addClass('disabled');
-        // let message = $('#message-body').val();
-
-        let message = '<html><body>';
-        message += '<h1>Hello, World!</h1>';
-        message += '</body></html>';
-
         sendMessage({
-                'To': $('#supplier-email').val(),
-                'Subject': $('#message-subject').val()
+                'To': $('#supplier-email').text(),
+                'Subject': $('#message-subject').text()
             },
-            message,
+            $('#message-body').text(),
             composeTidy
         );
 
@@ -72,6 +70,8 @@ function displayInbox() {
     }
 
     function sendMessage(headers_obj, message, callback) {
+        console.log(headers_obj)
+        console.log(message)
         var email = '';
         console.log(headers_obj);
         console.log(message);
@@ -101,4 +101,3 @@ function displayInbox() {
         $('#send-button').removeClass('disabled');
     }
 }
-// });

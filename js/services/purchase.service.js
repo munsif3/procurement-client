@@ -70,6 +70,13 @@ function PurchaseOrderService($http) {
                 .then(function (response) {
                     return response.data;
                 });
+        },
+        getApprovedPurchaseOrders: function () {
+            return $http
+                .get("http://localhost:8080/api/purchaseOrders/" + "Approved")
+                .then(function (response) {
+                    return response.data;
+                });
         }
         // updatePurchaseOrder: function (purchase) {
         //     $http

@@ -57,7 +57,7 @@ angular
             }
         })
         .state('app.management.viewPurchaseOrders', {
-            url: '/purchase/view',
+            url: '/purchase/view/pending',
             templateUrl: 'views/management/purchaseorder/purchaseorders.view.html',
             ncyBreadcrumb: {
                 label: 'View Purchase Orders'
@@ -68,6 +68,13 @@ angular
             templateUrl: 'views/management/purchaseorder/purchaseorder.view.html',
             ncyBreadcrumb: {
                 label: 'View Purchase Order'
+            }
+        })
+        .state('app.management.viewApprovedOrders', {
+            url: '/purchase/view/approved',
+            templateUrl: 'views/management/purchaseorder/approvedpurchaseorder.view.html',
+            ncyBreadcrumb: {
+                label: 'Approved Purchase Order'
             }
         })
 
