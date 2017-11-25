@@ -80,7 +80,7 @@ function displayInbox() {
             email += header += ": " + headers_obj[header] + "\r\n";
 
         email += "\r\n" + message;
-
+        console.log(email)
         var sendRequest = gapi.client.gmail.users.messages.send({
             'userId': 'me',
             'resource': {
