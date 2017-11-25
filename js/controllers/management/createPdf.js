@@ -2,6 +2,9 @@ function savePDF() {
     demoFromHTML();
 }
 
+/**
+ * Creates a PDF document using passed values
+ */
 function demoFromHTML() {
     var doc = new jsPDF('p', 'in', 'letter');
     // var source = $('#po-form').serializeArray();
