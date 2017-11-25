@@ -84,12 +84,18 @@ function purchaseOrderCtrl($scope, $timeout, $state,$filter, $location, $statePa
         }
     }
 
+    /**
+     * Fetch item details
+     */
     getItemDetails = function () {
         PurchaseOrderService.getItemDetails().then(items => {
             $scope.selectedPurchaseOrders.items = items;
         })
     }
 
+    /**
+     * Get the current logged user details
+     */
     getLoggedUserDetails = function (username) {
         PurchaseOrderService.getLoggedUserDetails(username).then(user => {
             $scope.selectedPurchaseOrders.approver = user;

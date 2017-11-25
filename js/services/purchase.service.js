@@ -2,6 +2,10 @@ angular.module("app").factory("PurchaseOrderService", PurchaseOrderService);
 
 PurchaseOrderService.$inject = ["$http"];
 
+/**
+ * Purchase Order Service with calls to all required APIs from the backend
+ * @param {*}  
+ */
 function PurchaseOrderService($http) {
     return {
         getPurchaseOrderByStatus: function () {
@@ -34,7 +38,7 @@ function PurchaseOrderService($http) {
         },
         getItemDetails: function () {
             return $http
-                .get("http://localhost:8080/items")
+                .get("http://localhost:8080/api/items")
                 .then(function (response) {
                     return response.data;
                 });

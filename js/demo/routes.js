@@ -4,6 +4,9 @@ angular
 .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', '$breadcrumbProvider', function($stateProvider, $urlRouterProvider, $ocLazyLoadProvider, $breadcrumbProvider) {
   $stateProvider
 
+  /**
+   * Routes for content pages using UI-Router
+   */
         .state('app.management', {
             url: "/management",
             abstract: true,
