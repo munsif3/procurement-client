@@ -77,6 +77,7 @@ function purchaseOrderController($scope, $timeout, $state, $filter,$location, No
     }
 
     changeRequestedItemPriceBySelectedSupplier = function (itemSupplierId) {
+        var supid = itemSupplierId;
         let units = {};
         units.supitems = [];
         let requestItems = [];
@@ -113,25 +114,35 @@ function purchaseOrderController($scope, $timeout, $state, $filter,$location, No
      * Update purchase order after generating the quotation of the purchase order
      */
     $scope.updatePurchaseOrder = function (quotations) {
-        console.log(quotations.approval);
-                if (quotations.approval == "Pending") {
-                    quotations.supplierId = $scope.selectedPurchaseOrders.supplierId;
-                    quotations.totalAmount = $scope.selectedPurchaseOrders.totalAmount;
-                    quotations.approval = "Pending";
-                    quotations.preparedBy = $scope.selectedPurchaseOrders.preparedBy;
-                    quotations.preparedDate = prepareDate;
-        
+        // console.log(quotations.approval);
+        // let v="Pending"
+        // console.log(quotations);
+        // console.log(supid);
+        let tot = $scope.getTotal();
+                if (quotations.status == "Placed") {
+                   console.log("yes");
+                   console.log($scope.suppliers.supplierId);
+                    quotations.supplierId = $scope.suppliers.supplierId.supplierId;
+                    quotations.supplierNo = $scope.suppliers.supplierId.supplierId.substr($scope.suppliers.supplierId.supplierId.length - 1); 
+                    quotations.totalAmount = tot;
+                    quotations.status = "Pending";
+                    quotations.preparedBy = $scope.userDetails.employeeId;
+                    quotations.preparedDate = $scope.preparedDate;
+                    console.log(quotations);
+                    
                     PurchaseOrderService.updatePurchaseOrder(quotations).then(quotations => {
                             Notification.success("Purchase Order has been sent to management for approval");
                             $location.path('/accounting/purchases/view');
                         })
                         .catch(err => {
+                            $location.path('/accounting/requisitions/view');
+                            Notification.error("Failed to Update  Order Status. Please try again");
                             console.log(err);
                         });
-                } else if (quotations.approval != "Pending") {
+                } else if (quotations.status != "Placed") {
                     Notification.error("Purchase Order has been Declined");
                     $location.path('/accounting/requisitions/view');
-                   console.log("yes");
+                   console.log("no");
                 }
             }
 }
